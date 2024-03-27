@@ -3965,6 +3965,7 @@ body{
 ===========================*/
 .footer{
 	position:relative;
+	
 }
 .footer .footer-top{
 	padding:100px 0px;
@@ -4054,7 +4055,7 @@ body{
 	bottom: 0px;
 	height: 3px;
 	width: 50px;
-	background: #fff;
+	background: #4383fa;
 }
 .footer .single-footer .time-sidual{
 	margin-top:15px;
@@ -4158,10 +4159,10 @@ body{
 	text-align:center;
 }
 .footer .copyright .copyright-content p{
-	color:#fff;
+	color:#000000;
 }
 .footer .copyright .copyright-content p a{
-	color:#fff;
+	color:#000000;
 	font-weight:400;
 	text-decoration:underline;
 	display:inline-block;
