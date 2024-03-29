@@ -13,6 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             case 'signup':
                 include"signup/index.php";
                 break;    
+                case 'notlogin':
+                    include"index1.php";
+                    echo"<script>alert('Login Required to acceess this page')</script>";
+                    break;     
         }
     }
 }

@@ -77,8 +77,8 @@
 						<div class="col-lg-6 col-md-7 col-12">
 							<!-- Top Contact -->
 							<ul class="top-contact">
-								<li><i class="fa fa-phone"></i>+880 1234 56789</li>
-								<li><i class="fa fa-envelope"></i><a href="mailto:support@yourmail.com">support@bcgs.com</a></li>
+								<li><i class="fa fa-phone"></i>+237-000-000-000</li>
+								<li><i class="fa fa-envelope"></i><a href="mailto:bcg@surport.com<">bcg@surport.com</a></li>
 							</ul>
 							<!-- End Top Contact -->
 						</div>
@@ -107,12 +107,16 @@
 									<nav class="navigation">
 										<ul class="nav menu">
 											<li><a class="active" href="index.php?reference=login">Home </a></li>											
-											<li><a href="contact.html">Help</a></li>										
+											<li><a href="admindashbaord/index.php">Dashboard</a></li>										
 											<li><a href="index.php?reference=login">Notification(4) </a></li>	
 											<li><a href="contact.html">mails(7)</a></li>
-											<li><a href="contact.html">profile</a></li>
-											<li><a href="index.php?reference=login">Login </a></li>	
+											<li><a href="contact.html">Help</a></li>					
+							                <li><a href="index.php?reference=login">Login </a></li>
 
+											
+												
+											
+											
 											
 										</ul>
 									</nav>

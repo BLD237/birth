@@ -1,236 +1,189 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - youtube.com/codingnepal -->
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Form with Shake Effect | CodingNepal</title>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsive Registration Form | CodingLab </title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins',sans-serif;
 }
 body{
-  width: 100%;
   height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: #5372F0;
+  align-items: center;
+  padding: 10px;
+  background: blue;
 }
-::selection{
-  color: #fff;
-  background: #5372F0;
-}
-.wrapper{
-  width: 380px;
-  padding: 40px 30px 50px 30px;
-  background: #fff;
+.container{
+  max-width: 700px;
+  width: 100%;
+  background-color: #fff;
+  padding: 25px 30px;
   border-radius: 5px;
-  text-align: center;
-  box-shadow: 10px 10px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
 }
-.wrapper header{
-  font-size: 35px;
-  font-weight: 600;
-}
-.wrapper form{
-  margin: 40px 0;
-}
-form .field{
-  width: 100%;
-  margin-bottom: 20px;
-}
-form .field.shake{
-  animation: shake 0.3s ease-in-out;
-}
-@keyframes shake {
-  0%, 100%{
-    margin-left: 0px;
-  }
-  20%, 80%{
-    margin-left: -12px;
-  }
-  40%, 60%{
-    margin-left: 12px;
-  }
-}
-form .field .input-area{
-  height: 50px;
-  width: 100%;
+.container .title{
+  font-size: 25px;
+  font-weight: 500;
   position: relative;
 }
-form input{
-  width: 100%;
-  height: 100%;
-  outline: none;
-  padding: 0 45px;
-  font-size: 18px;
-  background: none;
-  caret-color: #5372F0;
-  border-radius: 5px;
-  border: 1px solid #bfbfbf;
-  border-bottom-width: 2px;
-  transition: all 0.2s ease;
-}
-form .field input:focus,
-form .field.valid input{
-  border-color: #5372F0;
-}
-form .field.shake input,
-form .field.error input{
-  border-color: #dc3545;
-}
-.field .input-area i{
+.container .title::before{
+  content: "";
   position: absolute;
-  top: 50%;
-  font-size: 18px;
-  pointer-events: none;
-  transform: translateY(-50%);
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
-.input-area .icon{
-  left: 15px;
-  color: #bfbfbf;
-  transition: color 0.2s ease;
+.content form .user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
 }
-.input-area .error-icon{
-  right: 15px;
-  color: #dc3545;
+form .user-details .input-box{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
 }
-form input:focus ~ .icon,
-form .field.valid .icon{
-  color: #5372F0;
-}
-form .field.shake input:focus ~ .icon,
-form .field.error input:focus ~ .icon{
-  color: #bfbfbf;
-}
-form input::placeholder{
-  color: #bfbfbf;
-  font-size: 17px;
-}
-form .field .error-txt{
-  color: #dc3545;
-  text-align: left;
-  margin-top: 5px;
-}
-form .field .error{
-  display: none;
-}
-form .field.shake .error,
-form .field.error .error{
+form .input-box span.details{
   display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
 }
-form .pass-txt{
-  text-align: left;
-  margin-top: -10px;
-}
-.wrapper a{
-  color: #5372F0;
-  text-decoration: none;
-}
-.wrapper a:hover{
-  text-decoration: underline;
-}
-form input[type="submit"]{
-  height: 50px;
-  margin-top: 30px;
-  color: #fff;
-  padding: 0;
-  border: none;
-  background: #5372F0;
-  cursor: pointer;
-  border-bottom: 2px solid rgba(0,0,0,0.1);
+.user-details .input-box input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
   transition: all 0.3s ease;
 }
-form input[type="submit"]:hover{
-  background: #2c52ed;
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
+  border-color: #9b59b6;
+}
+ form .gender-details .gender-title{
+  font-size: 20px;
+  font-weight: 500;
+ }
+ form .category{
+   display: flex;
+   width: 80%;
+   margin: 14px 0 ;
+   justify-content: space-between;
+ }
+ form .category label{
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+ }
+ form .category label .dot{
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+ #dot-1:checked ~ .category label .one,
+ #dot-2:checked ~ .category label .two,
+ #dot-3:checked ~ .category label .three{
+   background: #9b59b6;
+   border-color: #d9d9d9;
+ }
+ form input[type="radio"]{
+   display: none;
+ }
+ form .button{
+   height: 45px;
+   margin: 35px 0
+ }
+ form .button input{
+   height: 100%;
+   width: 100%;
+   border-radius: 5px;
+   border: none;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background:blue;
+ }
+ form .button input:hover{
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  }
+ @media(max-width: 584px){
+ .container{
+  max-width: 100%;
+}
+form .user-details .input-box{
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  form .category{
+    width: 100%;
+  }
+  .content form .user-details{
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .user-details::-webkit-scrollbar{
+    width: 5px;
+  }
+  }
+  @media(max-width: 459px){
+  .container .content .category{
+    flex-direction: column;
+  }
 }
 
-</style>
-</head>
+    </style>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
 <body>
-  <div class="wrapper">
-    <header>Login Form</header>
-    <form action="#">
-      <div class="field email">
-        <div class="input-area">
-          <input type="text" placeholder="Email Address">
-          <i class="icon fas fa-envelope"></i>
-          <i class="error error-icon fas fa-exclamation-circle"></i>
+  <div class="container">
+    <div class="title">Login</div>
+    <div class="content">
+      <form action="action.php" method="post" >
+        <div class="user-details">         
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" placeholder="Enter your username" name="username" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="email" placeholder="Enter your email" name="email" required>
+          </div>
+        
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" placeholder="Enter your password" name="password" required>
+          </div>
+        
         </div>
-        <div class="error error-txt">Email can't be blank</div>
-      </div>
-      <div class="field password">
-        <div class="input-area">
-          <input type="password" placeholder="Password">
-          <i class="icon fas fa-lock"></i>
-          <i class="error error-icon fas fa-exclamation-circle"></i>
+        
+        <div class="button">
+          <a href="/birth/signup/index.php">Dont have and account yet</a>
+          <input type="submit" value="login" name="action" >
         </div>
-        <div class="error error-txt">Password can't be blank</div>
-      </div>
-      <div class="pass-txt"><a href="#">Forgot password?</a></div>
-      <input type="submit" value="Login">
-    </form>
-    <div class="sign-txt">Not yet member? <a href="/index.php?reference=signup">Signup now</a></div>
+      </form>
+    </div>
   </div>
-
-  <script>
-    const form = document.querySelector("form");
-eField = form.querySelector(".email"),
-eInput = eField.querySelector("input"),
-pField = form.querySelector(".password"),
-pInput = pField.querySelector("input");
-
-form.onsubmit = (e)=>{
-  e.preventDefault(); //preventing from form submitting
-  //if email and password is blank then add shake class in it else call specified function
-  (eInput.value == "") ? eField.classList.add("shake", "error") : checkEmail();
-  (pInput.value == "") ? pField.classList.add("shake", "error") : checkPass();
-
-  setTimeout(()=>{ //remove shake class after 500ms
-    eField.classList.remove("shake");
-    pField.classList.remove("shake");
-  }, 500);
-
-  eInput.onkeyup = ()=>{checkEmail();} //calling checkEmail function on email input keyup
-  pInput.onkeyup = ()=>{checkPass();} //calling checkPassword function on pass input keyup
-
-  function checkEmail(){ //checkEmail function
-    let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/; //pattern for validate email
-    if(!eInput.value.match(pattern)){ //if pattern not matched then add error and remove valid class
-      eField.classList.add("error");
-      eField.classList.remove("valid");
-      let errorTxt = eField.querySelector(".error-txt");
-      //if email value is not empty then show please enter valid email else show Email can't be blank
-      (eInput.value != "") ? errorTxt.innerText = "Enter a valid email address" : errorTxt.innerText = "Email can't be blank";
-    }else{ //if pattern matched then remove error and add valid class
-      eField.classList.remove("error");
-      eField.classList.add("valid");
-    }
-  }
-
-  function checkPass(){ //checkPass function
-    if(pInput.value == ""){ //if pass is empty then add error and remove valid class
-      pField.classList.add("error");
-      pField.classList.remove("valid");
-    }else{ //if pass is empty then remove error and add valid class
-      pField.classList.remove("error");
-      pField.classList.add("valid");
-    }
-  }
-
-  //if eField and pField doesn't contains error class that mean user filled details properly
-  if(!eField.classList.contains("error") && !pField.classList.contains("error")){
-    window.location.href = form.getAttribute("action"); //redirecting user to the specified url which is inside action attribute of form tag
-  }
-}
-
-  </script>
 
 </body>
 </html>
