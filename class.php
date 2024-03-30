@@ -117,6 +117,211 @@ private function setsession($dbid,$dbusername,$dbpassword,$dbfullname,$dbemail,$
 
    }
 }
+class Applicantion{
+    private $applicationNumber;
+    private $applicantName;
+    private $applicantContact;
+    private $applicantIdNumber;
+
+    public function generateId(){
+        return mt_rand(100000000, 999999999);
+    }
+    public function setapplicant($applicationNumber,$applicantname, $applicantContact, $applicantIdNumber){
+        $this->applicationNumber->$applicationNumber;
+        $this->applicantName = $applicantname;
+        $this->applicantContact = $applicantContact;
+        $this->applicantIdNumber = $applicantIdNumber;
+
+    }
+    public function getapplicantname(){
+        return $this->applicantName;
+    }
+    public function getapplicantcontact(){
+        return $this->applicantContact;
+    } 
+    public function getapplicantidnumber(){
+        return $this->applicantIdNumber;
+    }
+}
+class Child{    
+    public $childid;
+    private $childFirstName;
+    private $childLastName;
+    private $childDateOfBirth;
+    private $childGender;
+    private $childPlaceOfBirth;
+    private $childWeight;
+    private $childHeight;
+    public function setchild($childid, $childFirstName, $childLastName, $childDateOfBirth, $childGender, $childPlaceOfBirth, $childWeight, $childHeight){
+     $this->childid = $childid;
+     $this->childFirstName=$childFirstName;
+     $this->childLastName = $childLastName;
+     $this->childDateOfBirth = $childDateOfBirth;
+     $this->childGender = $childGender;
+     $this->childPlaceOfBirth = $childPlaceOfBirth;
+     $this->childWeight = $childWeight;
+     $this->childHeight = $childHeight;
+    }
+    public function getchildid(){
+        return $this->childid;
+    }
+    public function  getchildfirstname(){
+        return $this->childFirstName;
+    }
+     public function getchildlastname(){
+        return $this->childLastName;
+
+     }
+     public function getchilddateofbirth(){
+        return $this->childDateOfBirth;
+     }
+     public function getchildgender(){
+        return $this->childGender;
+     }
+     public function getchildplaceofbirth(){
+        return $this->childPlaceOfBirth;
+     }
+     public function getchildweight(){
+      return $this->childWeight;
+     }
+     public function getchildhieght(){
+        return $this->childHeight;
+     }
+}
+class father{
+    private $fatherName;
+    private $fatherAddress;
+    private $fatherPlaceOfBirth;
+    private $fatherSubdivision;
+    private $fatherDateOfBirth;
+    private $fatherOccupation;
+    private $fatherIdCardNumber;
+    private $fatherPhone;
+    private $fatherEmail;
+    public function setfather($fatherName, $fatherAddress, $fatherPlaceOfBirth, $fatherSubdivision, $fatherDateOfBirth, $fatherOccupation, $fatherIdCardNumber, $fatherEmail, $fatherPhone){
+        $this->fatherName = $fatherName;
+        $this->fatherAddress = $fatherAddress;
+        $this->fatherPlaceOfBirth = $fatherPlaceOfBirth;
+        $this->fatherSubdivision = $fatherSubdivision;
+        $this->fatherDateOfBirth = $fatherDateOfBirth;
+        $this->fatherOccupation = $fatherOccupation;
+        $this->fatherIdCardNumber = $fatherIdCardNumber;
+        $this->fatherEmail = $fatherEmail; 
+
+    }
+    public function getfathername(){
+        return $this->fatherName;
+    }
+    public function getfatheraddress(){
+        return $this->fatherAddress;
+    }
+    public function getfatherplaceofbirth(){
+        return $this->fatherPlaceOfBirth;
+    }
+    public function getfathersubdivision(){
+        return $this->fatherSubdivision;
+    }
+    public function getfatherdateofbirth(){
+        return $this->fatherDateOfBirth;
+    }
+    public function getfatheroccupation(){
+        return $this->fatherOccupation;
+    }
+    public function getfatheridcardnumber(){
+        return $this->fatherIdCardNumber;
+    }
+    public function getfatherphone(){
+        return $this->fatherPhone;
+    }
+    public function getfatheremail(){
+        return $this->fatherEmail;
+    }
+
+}
+class mother{
+    private $motherName;
+    private $motherAddress;
+    private $motherPlaceOfBirth;
+    private $motherSubdivision;
+    private $motherDateOfBirth;
+    private $motherOccupation;
+    private $motherIdCardNumber;
+    private $motherPhone;
+    private $motherEmail;
+    public function setmother($motherName, $motherAddress, $motherPlaceOfBirth, $motherSubdivision, $motherDateOfBirth, $motherOccupation, $motherIdCardNumber, $motherEmail, $motherPhone){
+        $this->motherName = $motherName;
+        $this->motherAddress = $motherAddress;
+        $this->motherPlaceOfBirth = $motherPlaceOfBirth;
+        $this->motherSubdivision = $motherSubdivision;
+        $this->motherDateOfBirth = $motherDateOfBirth;
+        $this->motherOccupation = $motherOccupation;
+        $this->motherIdCardNumber = $motherIdCardNumber;
+        $this->motherEmail = $motherEmail;
+        $this->motherPhone = $motherPhone;
+    }
+    public function getmothername(){
+        return $this->motherName;
+    }
+    public function getmotheraddress(){
+        return $this->motherAddress;
+    }
+
+    public function getmotherplaceofbirth(){
+        return $this->motherPlaceOfBirth;
+    }
+    public function getmothersubdivision(){
+        return $this->motherSubdivision;
+    }
+    
+    public function getmotherdateofbirth(){
+        return $this->motherDateOfBirth;
+    }
+    public function getmotheroccupation(){
+        return $this->motherOccupation;
+    }
+    public function getmotheridcardnumber(){
+        return $this->motherIdCardNumber;
+    }
+    public function getmotherphone(){
+        return $this->motherPhone;
+    }
+    public function getmotheremail(){
+        return $this->motherEmail;
+    }
+
+
+}
+class location{                
+    private $nationality;
+    private $hospitalName;
+    private $region;
+    private $division;
+    private $town;
+    public function setlocation(){
+        $this->nationality;
+        $this->hospitalName;
+        $this->region;
+        $this->division;
+        $this->town;
+    }
+    public function getnationality(){
+        return $this->nationality;
+    }
+    public function gethospitalname(){
+        return $this->hospitalName;
+    }
+    public function getregion(){
+        return $this->region;
+    }
+    public function getdivision(){
+        return $this->division;
+    }
+    public function gettown(){
+        return $this->town;
+    }
+    
+}
+
 
 
 
