@@ -68,6 +68,18 @@
     <div class="row">
     <form id="data-collection-form">
         <div class="box">
+        <div class="col">       
+      <h2>Applicant Information</h2>
+      <div class="form-group pb-4"> 
+      <label for="child-age">Applicant name</label>
+      <input  class="form-control input-sm" type="text" name="fname" id="child-age" required>
+
+      <label for="child-school">Applicant contact</label>
+      <input  class="form-control input-sm"  type="date" name="lname" id="child-school" required>
+      <label for="child-age">Applicant id-number</label>
+      <input  class="form-control input-sm" type="text" name="applicantidnumber" id="child-age" required>
+      </div>
+      </div>
             <hr>
     <div class="col">       
       <h2>Child's Information</h2>
@@ -79,7 +91,7 @@
       <input  class="form-control input-sm"  type="date" name="lname" id="child-school" required>
 
       <label for="child-hobbies">Child's Date Of Birth</label>
-      <input  class="form-control input-sm" type="text" name="dateofbirth" id="child-hobbies" required>
+      <input  class="form-control input-sm" type="date" name="child" id="child-hobbies" required>
 
       <label for="child-hobbies">Child's Date Of Birth</label>
       <select name="gender" id="" class="form-control input-sm" > 
@@ -213,7 +225,7 @@
       <input  class="form-control input-sm" type="number" id="child-age" required>      
       </div>
       </div>
-      <button class="btn btn-primary" >SUBMIT</button>
+      <button class="btn btn-primary" name="action" value="submit" >SUBMIT</button>
       </div>
       
     </form>
