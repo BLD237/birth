@@ -297,12 +297,12 @@ class location{
     private $region;
     private $division;
     private $town;
-    public function setlocation(){
-        $this->nationality;
-        $this->hospitalName;
-        $this->region;
-        $this->division;
-        $this->town;
+    public function setlocation($nationality, $hospitalName , $region,$division, $town){
+        $this->nationality = $nationality;
+        $this->hospitalName = $hospitalName;
+        $this->region = $region;
+        $this->division = $division;
+        $this->town = $town;
     }
     public function getnationality(){
         return $this->nationality;
@@ -319,7 +319,32 @@ class location{
     public function gettown(){
         return $this->town;
     }
-    
+
+}
+class midwife{
+    public $witnessNationality;
+    public $witnessIdCard;
+    public $midwifeName;
+    public $midwifePhone;
+    public function setwitness($witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone){
+        $this->witnessNationality;
+        $this->witnessIdCard;
+        $this->midwifeName;
+        $this->midwifePhone;
+    }
+    public function getwitnessnationality(){
+        return $this->witnessNationality;
+    }
+    public function getwitnessidcard(){
+        return $this->witnessIdCard;
+    }
+    public function getmidwifename(){
+        return $this->midwifeName;
+    }
+    public function getmidwifephone(){
+        return $this->midwifePhone;
+    }
+
 }
 
 
