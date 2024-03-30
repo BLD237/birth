@@ -122,9 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $witnessIdCard = $_POST['witness_idcard'];
                     $midwifeName = $_POST['midwife_name'];
                     $midwifePhone = $_POST['midwife_phone'];
-                
-
-                    break;     
+                     break;     
         }
     }
 }

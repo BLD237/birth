@@ -66,7 +66,7 @@
 <body style="background-color:#cadff3" >
   <div class="container">
     <div class="row">
-    <form id="data-collection-form">
+    <form id="data-collection-form" action="/birth/action.php" method="post">
         <div class="box">
         <div class="col">       
       <h2>Applicant Information</h2>
@@ -234,12 +234,7 @@
     
 
   <script>
-    document.getElementById('data-collection-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      // You can add form data collection and submission logic here
-      console.log('Form submitted!');
-      // Example: You can fetch form data using document.getElementById('<input-id>').value
-    });
+   
   </script>
 </body>
 </html>
