@@ -142,6 +142,11 @@ class Applicantion{
     public function getapplicantidnumber(){
         return $this->applicantIdNumber;
     }
+    public function createapplication($applicationNumber, $applicationName, ){
+        $sql  = "INSERT INTO application (applicationNumber, applicantName, applicantContact, applicantIdNumber, fatherName, fatherAddress, fatherPlaceOfBirth, fatherSubdivision, fatherDateOfBirth, fatherOccupation, fatherIdCardNumber, fatherPhone, fatherEmail, motherName, motherAddress, motherPlaceOfBirth, motherSubdivision, motherDateOfBirth, motherOccupation, motherIdCardNumber, motherPhone, motherEmail, childName, childLastName, childDateOfBirth, childGender, childPlaceOfBirth, childWeight, childHeight, nationality, hospitalName, region, division, town, midwifeName, midwifePhone)
+        VALUES ('$applicationNumber', '$applicantName', '$applicantContact', '$applicantIdNumber', '$fatherName', '$fatherAddress', '$fatherPlaceOfBirth', '$fatherSubdivision', '$fatherDateOfBirth', '$fatherOccupation', '$fatherIdCardNumber', '$fatherPhone', '$fatherEmail', '$motherName', '$motherAddress', '$motherPlaceOfBirth', '$motherSubdivision', '$motherDateOfBirth', '$motherOccupation', '$motherIdCardNumber', '$motherPhone', '$motherEmail', '$childName', '$childLastName', '$childDateOfBirth', '$childGender', '$childPlaceOfBirth', '$childWeight', '$childHeight', '$nationality', '$hospitalName', '$region', '$division', '$town', '$midwifeName', '$midwifePhone');";
+
+    }
 }
 class Child{    
     public $childid;
@@ -187,6 +192,11 @@ class Child{
      public function getchildhieght(){
         return $this->childHeight;
      }
+     public function createchild($childid, $childFirstName, $childLastName, $childDateOfBirth, $childGender, $childPlaceOfBirth, $childWeight, $childHeight){
+        $sql="INSERT INTO child (childFirstName, childLastName, childDateOfBirth, childGender, childPlaceOfBirth, childWeight, childHeight)
+        VALUES ('$childFirstName', '$childLastName', '$childDateOfBirth', '$childGender', '$childPlaceOfBirth', '$childWeight', '$childHeight');";
+
+     }
 }
 class father{
     private $fatherName;
@@ -206,6 +216,7 @@ class father{
         $this->fatherDateOfBirth = $fatherDateOfBirth;
         $this->fatherOccupation = $fatherOccupation;
         $this->fatherIdCardNumber = $fatherIdCardNumber;
+        $this->fatherPhone = $fatherPhone;
         $this->fatherEmail = $fatherEmail; 
 
     }
@@ -235,6 +246,10 @@ class father{
     }
     public function getfatheremail(){
         return $this->fatherEmail;
+    }
+    public function createfather($fatherName, $fatherAddress, $fatherPlaceOfBirth, $fatherSubdivision, $fatherDateOfBirth, $fatherOccupation, $fatherIdCardNumber, $fatherEmail, $fatherPhone){
+        $sql = "INSERT INTO father (fatherName, fatherAddress, fatherPlaceOfBirth, fatherSubdivision, fatherDateOfBirth, fatherOccupation, fatherIdCardNumber, fatherEmail, fatherPhone)
+        VALUES ('$fatherName', '$fatherAddress', '$fatherPlaceOfBirth', '$fatherSubdivision', '$fatherDateOfBirth', '$fatherOccupation', '$fatherIdCardNumber', '$fatherEmail', '$fatherPhone');";
     }
 
 }
@@ -288,6 +303,10 @@ class mother{
     public function getmotheremail(){
         return $this->motherEmail;
     }
+    public function createmother($motherName, $motherAddress, $motherPlaceOfBirth, $motherSubdivision, $motherDateOfBirth, $motherOccupation, $motherIdCardNumber, $motherEmail, $motherPhone){
+        $sql = "INSERT INTO mother (motherName, motherAddress, motherPlaceOfBirth, motherSubdivision, motherDateOfBirth, motherOccupation, motherIdCardNumber, motherEmail, motherPhone)
+        VALUES ('$motherName', '$motherAddress', '$motherPlaceOfBirth', '$motherSubdivision', '$motherDateOfBirth', '$motherOccupation', '$motherIdCardNumber', '$motherEmail', '$motherPhone');";
+    }
 
 
 }
@@ -319,6 +338,10 @@ class location{
     public function gettown(){
         return $this->town;
     }
+    public function createlocation($nationality, $hospitalName , $region,$division, $town){
+        $sql = "INSERT INTO location (nationality, hospitalName, region, division, town)
+        VALUES ('$nationality', '$hospitalName', '$region', '$division', '$town');";
+    }
 
 }
 class midwife{
@@ -343,6 +366,10 @@ class midwife{
     }
     public function getmidwifephone(){
         return $this->midwifePhone;
+    }
+    public function createwitness($witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone){
+        $sql = "INSERT INTO witness (witnessNationality, witnessIdCard, midwifeName, midwifePhone)
+        VALUES ('$witnessNationality', '$witnessIdCard', '$midwifeName', '$midwifePhone');";
     }
 
 }
