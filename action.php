@@ -137,7 +137,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $midwifeName = $_POST['midwife_name'];
                     $midwifePhone = $_POST['midwife_phone'];
                     $witness = new midwife();
-                    $witness->setwitness($midwifeid, $applicationnumber,$witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone);
+                    $witness->setwitness($midwifeid,$witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone);
+                    $witness->createwitness($midwifeid,$applicationNumber,$witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone);
 
 
                      break;     
