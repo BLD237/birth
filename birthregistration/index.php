@@ -72,10 +72,10 @@
       <h2>Applicant Information</h2>
       <div class="form-group pb-4"> 
       <label for="child-age">Applicant name</label>
-      <input  class="form-control input-sm" type="text" name="fname" id="child-age" required>
+      <input  class="form-control input-sm" type="text" name="applicantname" id="child-age" required>
 
       <label for="child-school">Applicant contact</label>
-      <input  class="form-control input-sm"  type="date" name="lname" id="child-school" required>
+      <input  class="form-control input-sm"  type="text" name="applicantcontact" id="child-school" required>
       <label for="child-age">Applicant id-number</label>
       <input  class="form-control input-sm" type="text" name="applicantidnumber" id="child-age" required>
       </div>
@@ -88,10 +88,10 @@
       <input  class="form-control input-sm" type="text" name="fname" id="child-age" required>
 
       <label for="child-school">Child's Last Name</label>
-      <input  class="form-control input-sm"  type="date" name="lname" id="child-school" required>
+      <input  class="form-control input-sm"  type="text" name="lname" id="child-school" required>
 
       <label for="child-hobbies">Child's Date Of Birth</label>
-      <input  class="form-control input-sm" type="date" name="child" id="child-hobbies" required>
+      <input  class="form-control input-sm" type="date" name="childdob" id="child-hobbies" required>
 
       <label for="child-hobbies">Child's Date Of Birth</label>
       <select name="gender" id="" class="form-control input-sm" > 
@@ -100,7 +100,7 @@
     </select>
 
       <label for="child-age">Child's Place of Birth</label>
-      <input  class="form-control input-sm" type="text" name="paceofbirth" id="child-age" required>
+      <input  class="form-control input-sm" type="text" name="placeofbirth" id="child-age" required>
 
       <label for="child-school">Child's wieght:</label>
       <input  class="form-control input-sm"  type="number" name="wieght" id="child-school" required>
@@ -115,31 +115,31 @@
       <h2>Father's Information</h2>
       <div class="form-group pb-4"> 
       <label for="child-age">Father's name</label>
-      <input  class="form-control input-sm" type="number" id="child-age" required>
+      <input  class="form-control input-sm" name="fathername" type="text" id="child-age" required>
 
       <label for="child-school">Father's address</label>
-      <input  class="form-control input-sm"  type="text" id="child-school" required>
+      <input  class="form-control input-sm" name="fatheraddress" type="text" id="child-school" required>
 
       <label for="child-hobbies">Father's place of birth</label>
-      <input  class="form-control input-sm" type="text" id="child-hobbies" required>
+      <input  class="form-control input-sm" name="fatherplaceofbirth" type="text" id="child-hobbies" required>
         
-      <label for="child-hobbies">Mother's subdivision</label>
-      <input  class="form-control input-sm" type="text" id="child-hobbies" required>
+      <label for="child-hobbies">father's subdivision</label>
+      <input  class="form-control input-sm" name="fathersubdivision" type="text" id="child-hobbies" required>
 
       <label for="child-age">Father's date of birth</label>
-      <input  class="form-control input-sm" type="number" id="child-age" required>
+      <input  class="form-control input-sm" name="fatherdob" type="date" id="child-age" required>
 
       <label for="child-school">Father's occuppation</label>
-      <input  class="form-control input-sm"  type="text" id="child-school" required>
+      <input  class="form-control input-sm" name="fatheroccupation" type="text" id="child-school" required>
 
       <label for="child-hobbies">Father's Idcard number</label>
-      <input  class="form-control input-sm" type="text" id="child-hobbies" required>
+      <input  class="form-control input-sm" name="fatherid" type="text" id="child-hobbies" required>
 
       <label for="child-hobbies">Father's Phone</label>
-      <input  class="form-control input-sm" type="text" id="child-hobbies" required>
+      <input  class="form-control input-sm" type="text" name="fatherphone" id="child-hobbies" required>
 
       <label for="child-hobbies">Father's email</label>
-      <input  class="form-control input-sm" type="text" id="child-hobbies">
+      <input  class="form-control input-sm" name="fatheremail" type="text" id="child-hobbies">
       </div>
       </div>
       <hr>
@@ -149,31 +149,31 @@
       <h2>Mother's Information</h2>
       <div class="form-group pb-4"> 
       <label for="child-age">Mother's name</label>
-      <input  class="form-control input-sm" type="number" id="child-age" required>
+      <input name="mothername"  class="form-control input-sm" type="text" id="child-age" required>
 
       <label for="child-school">Mother's address</label>
-      <input  class="form-control input-sm"  type="text" id="child-school" required>
+      <input name="motheraddress" class="form-control input-sm"  type="text" id="child-school" required>
 
       <label for="child-hobbies">Mother's place of birth</label>
-      <input  class="form-control input-sm" type="text" id="child-hobbies" required>
+      <input  name="mother_place_of_birth" class="form-control input-sm" type="text" id="child-hobbies" required>
       
       <label for="child-hobbies">Mother's subdivision</label>
-      <input  class="form-control input-sm" type="text" id="child-hobbies" required>
+      <input name="mother_subdivision" class="form-control input-sm" type="text" id="child-hobbies" required>
 
       <label for="child-age">Mother's date of birth</label>
-      <input  class="form-control input-sm" type="number" id="child-age" required>
+      <input name="mother_date_of_birth" class="form-control input-sm" type="date" id="child-age" required>
 
       <label for="child-school">Mother's occuppation</label>
-      <input  class="form-control input-sm"  type="text" id="child-school" required>
+      <input name="mother_occupation"  class="form-control input-sm"  type="text" id="child-school" required>
 
       <label for="child-hobbies">Mother's Idcard number</label>
-      <input  class="form-control input-sm" type="text" id="child-hobbies" required>
+      <input name="mother_idcard_number" class="form-control input-sm" type="text" id="child-hobbies" required>
 
       <label for="child-hobbies">Mother's Phone</label>
-      <input  class="form-control input-sm" type="text" id="child-hobbies" required>
+      <input name="mother_phone" class="form-control input-sm" type="text" id="child-hobbies" required>
 
       <label for="child-hobbies">Mother's email</label>
-      <input  class="form-control input-sm" type="text" id="child-hobbies">
+      <input name="mother_email" class="form-control input-sm" type="text" id="child-hobbies">
       </div>
       </div>
       <hr>
@@ -182,12 +182,12 @@
       <h2>Location Information</h2>
       <div class="form-group pb-4"> 
       <label for="child-age">Nationality*</label>
-      <input  class="form-control input-sm" type="number" id="child-age" required>
+      <input name="nationality" class="form-control input-sm" type="text" id="child-age" required>
 
-      <label for="child-age">Hostpital / Health name</label>
-      <input  class="form-control input-sm" type="number" id="child-age" required>    
+      <label  for="child-age">Hostpital / Health name</label>
+      <input name="hospital_name"  class="form-control input-sm" type="text" id="child-age" required>    
       <label for="child-school">Region</label>
-      <select name="gender" id="" class="form-control input-sm" >  
+      <select name="region" id="" class="form-control input-sm" >  
       <option value="">SELECT REGION</option>            
         <option value="CENTRE">CENTRE</option>
         <option value="LITORAL">LITORAL</option>
@@ -202,10 +202,10 @@
     </select>
 
       <label for="child-hobbies">division</label>
-      <input  class="form-control input-sm" type="text" id="child-hobbies" required>
+      <input name="division" class="form-control input-sm" type="text" id="child-hobbies" required>
 
       <label for="child-age">Town</label>
-      <input  class="form-control input-sm" type="number" id="child-age" required>      
+      <input name="town" class="form-control input-sm" type="text" id="child-age" required>      
       </div>
       </div>
       <hr>
@@ -213,19 +213,19 @@
       <h2>Witness Information/Midwife</h2>
       <div class="form-group pb-4"> 
       <label for="child-age">Nationality*</label>
-      <input  class="form-control input-sm" type="number" id="child-age" required>
+      <input name="witness_nationality" class="form-control input-sm" type="text" id="child-age" required>
       <label for="child-age">ID CARD*</label>
 
-      <input  class="form-control input-sm" type="number" id="child-age" required> 
+      <input name="witness_idcard"  class="form-control input-sm" type="text" id="child-age" required> 
 
-      <label for="child-hobbies">Midwife Name*</label>
-      <input  class="form-control input-sm" type="text" id="child-hobbies" required>
+      <label  for="child-hobbies">Midwife Name*</label>
+      <input name="midwife_name"  class="form-control input-sm" type="text" id="child-hobbies" required>
 
       <label for="child-age">Phone*</label>
-      <input  class="form-control input-sm" type="number" id="child-age" required>      
+      <input name="midwife_phone" class="form-control input-sm" type="text" id="child-age" required>      
       </div>
       </div>
-      <button class="btn btn-primary" name="action" value="submit" >SUBMIT</button>
+      <button class="btn btn-primary" name="action" value="register" >SUBMIT</button>
       </div>
       
     </form>

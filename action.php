@@ -78,8 +78,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }   
                     break; 
                  case 'register':
-                    $applicantName = $_POST['fname'];
-                    $applicantContact = $_POST['lname'];
+                    $applicantName = $_POST['applicantname'];
+                    $applicantContact = $_POST['applicantcontact'];
                     $applicantIdNumber = $_POST['applicantidnumber'];                    
                     $applicant = new Applicantion();
                     $applicationnumber = $applicant->generateId();
@@ -87,28 +87,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Child's Information
                     $childFirstName = $_POST['fname'];
                     $childLastName = $_POST['lname'];
-                    $childDateOfBirth = $_POST['child'];
+                    $childDateOfBirth = $_POST['childdob'];
                     $childGender = $_POST['gender'];
                     $childPlaceOfBirth = $_POST['placeofbirth'];
-                    $childWeight = $_POST['weight'];
-                    $childHeight = $_POST['height'];
+                    $childWeight = $_POST['wieght'];
+                    $childHeight = $_POST['hieght'];
                     $childid = $applicant->generateId();
                     $child = new Child;
                     $child->setchild($childid,$childFirstName, $childLastName, $childDateOfBirth, $childGender, $childPlaceOfBirth, $childWeight, $childHeight);
-                    $child->createchild($childid, $childFirstName, $childLastName, $childDateOfBirth, $childGender, $childPlaceOfBirth, $childWeight, $childHeight, $fatherIdCardNumber, $motherIdCardNumber);
+                    
                      // Father's Information
                     $fatherName = $_POST['fathername'];
                     $fatherAddress = $_POST['fatheraddress'];
                     $fatherPlaceOfBirth = $_POST['fatherplaceofbirth'];
-                    $motherSubdivision = $_POST['mothersubdivision'];
+                    $fatherSubdivision = $_POST['fathersubdivision'];
                     $fatherDateOfBirth = $_POST['fatherdob'];
                     $fatherOccupation = $_POST['fatheroccupation'];
-                    $fatherIdCardNumber = $_POST['fatheridcard'];
+                    $fatherIdCardNumber = $_POST['fatherid'];
                     $fatherPhone = $_POST['fatherphone'];
                     $fatherEmail = $_POST['fatheremail'];
                     $father = new father();
-                    $father->setfather($fatehername, $fatherAddress, $fatherPlaceOfBirth, $fatherSubdivision, $fatherDateOfBirth, $fatherOccupation, $fatherIdCardNumber, $fatherEmail, $fatherPhone);
-                    $father->createfather($fatherName, $fatherAddress, $fatherPlaceOfBirth, $fatherSubdivision, $fatherDateOfBirth, $fatherOccupation, $fatherIdCardNumber, $fatherEmail, $fatherPhone, $motherIdCardNumber);
+                    $father->setfather($fatherName, $fatherAddress, $fatherPlaceOfBirth, $fatherSubdivision, $fatherDateOfBirth, $fatherOccupation, $fatherIdCardNumber, $fatherEmail, $fatherPhone);
+                  
                     //mothers information
                     $motherName = $_POST['mothername'];
                     $motherAddress = $_POST['motheraddress'];
@@ -121,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $motherEmail = $_POST['mother_email'];
                     $mother = new mother();
                     $mother->setmother($motherName, $motherAddress, $motherPlaceOfBirth, $motherSubdivision, $motherDateOfBirth, $motherOccupation, $motherIdCardNumber, $motherEmail, $motherPhone);
-                    $mother->createmother($motherName, $motherAddress, $motherPlaceOfBirth, $motherSubdivision, $motherDateOfBirth, $motherOccupation, $motherIdCardNumber, $motherEmail, $motherPhone);
+                    
                     //location
                     $nationality = $_POST['nationality'];
                     $hospitalName = $_POST['hospital_name'];
@@ -129,17 +129,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $division = $_POST['division'];
                     $town = $_POST['town'];
                     $location = new location();
-                    $location->setlocation($nationality, $hospitalName, $region, $division, $town);       
-                    $location->createlocation($applicationNumber ,$nationality, $hospitalName , $region,$division, $town);
+                    $location->setlocation($nationality, $hospitalName, $region, $division, $town);      
+                    
                     //witness         
                     $witnessNationality = $_POST['witness_nationality'];
                     $witnessIdCard = $_POST['witness_idcard'];
                     $midwifeName = $_POST['midwife_name'];
                     $midwifePhone = $_POST['midwife_phone'];
+                    $midwifeid = $applicant->generateId();
                     $witness = new midwife();
                     $witness->setwitness($midwifeid,$witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone);
-                    $witness->createwitness($midwifeid,$applicationNumber,$witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone);
+                    $child->createchild($childid,$applicationnumber, $childFirstName, $childLastName, $childDateOfBirth, $childGender, $childPlaceOfBirth, $childWeight, $childHeight, $fatherIdCardNumber, $motherIdCardNumber);
+                    $father->createfather($fatherName, $fatherAddress, $fatherPlaceOfBirth, $fatherSubdivision, $fatherDateOfBirth, $fatherOccupation, $fatherIdCardNumber, $fatherEmail, $fatherPhone, $motherIdCardNumber);
+                    $mother->createmother($motherName, $motherAddress, $motherPlaceOfBirth, $motherSubdivision, $motherDateOfBirth, $motherOccupation, $motherIdCardNumber, $motherEmail, $motherPhone);
+                    $location->createlocation($applicationnumber ,$nationality, $hospitalName , $region,$division, $town);
+                    $witness->createwitness($midwifeid,$applicationnumber,$witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone);
+                   
+                    $result = $applicant->createapplication($applicationnumber, $applicantName, $applicantContact, $applicantIdNumber, $childid, $childLastName, $childDateOfBirth, $childPlaceOfBirth, $fatherIdCardNumber , $fatherName, $fatherDateOfBirth, $fatherPlaceOfBirth, $motherIdCardNumber,$motherDateOfBirth , $motherPlaceOfBirth);
+                    if($result){
+                       header("LOCATION: admindashbaord/index.php?reference=applicatonsubmited");
+                    }else{
+                        echo "faild";
+                    }
 
+       
 
                      break;     
         }

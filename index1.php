@@ -125,7 +125,7 @@
 							</div>
 							<div class="col-lg-2 col-12">
 								<div class="get-quote">
-									<a href="appointment.html" class="btn">APPLY FOR CERTIFICATE</a>
+									<a href="birthregistration/index.php" class="btn">APPLY FOR CERTIFICATE</a>
 								</div>
 							</div>
 						</div>

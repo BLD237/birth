@@ -1,3 +1,21 @@
+<?php
+if(!session_start()){
+  session_start();
+}
+if($_SESSION['bcglevel']==1){
+
+}else if($_SESSION['bcglevel']==2){
+  include "user.php";
+}else{
+  header("LOCATION:  /birth/index.php?reference=notlogin");
+}
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -326,7 +344,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item active">New Applications</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -335,311 +353,222 @@
       <div class="row">
 
         <!-- Left side columns -->
-        <div class="col-lg-8">
-          <div class="row">
+       
+        <div class="col">
 
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card">
+<div class="card">
+  <div class="card-body pt-3">
+    <!-- Bordered Tabs -->
+    <ul class="nav nav-tabs nav-tabs-bordered">
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
+      <li class="nav-item">
+        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+      </li>
 
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Father's information</button>
+      </li>
 
-                <div class="card-body">
-                  <h5 class="card-title">Applications <span>| Today</span></h5>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Mother's information</button>
+      </li>
 
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-layout-text-window-reverse"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">145</span> <span class="text-muted small pt-2 ps-1">increase</span>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Action</button>
+      </li>
 
-                    </div>
-                  </div>
-                </div>
+    </ul>
+    <div class="tab-content pt-2">
 
-              </div>
-            </div><!-- End Sales Card -->
+      <div class="tab-pane fade show active profile-overview" id="profile-overview">
+        <h5 class="card-title">About</h5>
+        <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
 
-            <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card revenue-card">
+        <h5 class="card-title">Profile Details</h5>
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label ">Full Name</div>
+          <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+        </div>
 
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Company</div>
+          <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+        </div>
 
-                <div class="card-body">
-                  <h5 class="card-title">Applications <span>| This Month</span></h5>
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Job</div>
+          <div class="col-lg-9 col-md-8">Web Designer</div>
+        </div>
 
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-layout-text-window-reverse"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>264</h6>
-                      <span class="text-success small pt-1 fw-bold">264</span> <span class="text-muted small pt-2 ps-1">increase</span>
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Country</div>
+          <div class="col-lg-9 col-md-8">USA</div>
+        </div>
 
-                    </div>
-                  </div>
-                </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Address</div>
+          <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+        </div>
 
-              </div>
-            </div><!-- End Revenue Card -->
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Phone</div>
+          <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+        </div>
 
-            <!-- Customers Card -->
-            <div class="col-xxl-4 col-xl-12">
-
-              <div class="card info-card customers-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Applications  <span>| This Year</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>1244</h6>
-                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div><!-- End Customers Card -->
-            <!-- Recent Applications -->
-            <div class="col-12">
-              <div class="card recent-sales overflow-auto">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Recent Applications<span>| Today</span></h5>
-
-                  <table class="table table-borderless datatable">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Application Number</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Time</th>
-                        <th scope="col">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>                      
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Raheem Lehner</td>
-                        <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                        <td>$165</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
-
-              </div>
-            </div><!-- End Recent Sales -->
-
-            <!-- Top Selling -->
-            <<!-- End Top Selling -->
-
-          </div>
-        </div><!-- End Left side columns -->
-
-        <!-- Right side columns -->
-        <div class="col-lg-4">
-
-          <!-- Recent Activity -->
-          <!-- End Recent Activity -->
-
-          <!-- Budget Report -->
-          <!-- End Budget Report -->
-
-          <!-- Website Traffic -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">Website Traffic <span>| Today</span></h5>
-
-              <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  echarts.init(document.querySelector("#trafficChart")).setOption({
-                    tooltip: {
-                      trigger: 'item'
-                    },
-                    legend: {
-                      top: '5%',
-                      left: 'center'
-                    },
-                    series: [{
-                      name: 'Access From',
-                      type: 'pie',
-                      radius: ['40%', '70%'],
-                      avoidLabelOverlap: false,
-                      label: {
-                        show: false,
-                        position: 'center'
-                      },
-                      emphasis: {
-                        label: {
-                          show: true,
-                          fontSize: '18',
-                          fontWeight: 'bold'
-                        }
-                      },
-                      labelLine: {
-                        show: false
-                      },
-                      data: [{
-                          value: 1048,
-                          name: 'Search Engine'
-                        },
-                        {
-                          value: 735,
-                          name: 'Direct'
-                        },
-                        {
-                          value: 580,
-                          name: 'Email'
-                        },
-                        {
-                          value: 484,
-                          name: 'Union Ads'
-                        },
-                        {
-                          value: 300,
-                          name: 'Video Ads'
-                        }
-                      ]
-                    }]
-                  });
-                });
-              </script>
-
-            </div>
-          </div><!-- End Website Traffic -->
-
-          <!-- News & Updates Traffic -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
-
-              <div class="news">
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-1.jpg" alt="">
-                  <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                  <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-2.jpg" alt="">
-                  <h4><a href="#">Quidem autem et impedit</a></h4>
-                  <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-3.jpg" alt="">
-                  <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
-                  <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-4.jpg" alt="">
-                  <h4><a href="#">Laborum corporis quo dara net para</a></h4>
-                  <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-5.jpg" alt="">
-                  <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
-                  <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
-                </div>
-
-              </div><!-- End sidebar recent posts-->
-
-            </div>
-          </div><!-- End News & Updates -->
-
-        </div><!-- End Right side columns -->
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Email</div>
+          <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+        </div>
 
       </div>
+
+      <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+     <!-- fathers info -->
+        <!-- Profile Edit Form -->
+      <!-- End Profile Edit Form -->
+      <div class="tab-pane fade show active profile-overview" id="profile-overview">
+        <h5 class="card-title">About</h5>
+        <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
+
+        <h5 class="card-title">Profile Details</h5>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label ">Full Name</div>
+          <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Company</div>
+          <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Job</div>
+          <div class="col-lg-9 col-md-8">Web Designer</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Country</div>
+          <div class="col-lg-9 col-md-8">USA</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Address</div>
+          <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Phone</div>
+          <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Email</div>
+          <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+        </div>
+
+      </div>
+
+      </div>
+
+      <div class="tab-pane fade pt-3" id="profile-settings">
+<!-- mother info -->
+        <!-- Settings Form -->
+       <!-- End settings Form -->
+       <div class="tab-pane fade show active profile-overview" id="profile-overview">
+        <h5 class="card-title">About</h5>
+        <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
+
+        <h5 class="card-title">Profile Details</h5>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label ">Full Name</div>
+          <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Company</div>
+          <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Job</div>
+          <div class="col-lg-9 col-md-8">Web Designer</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Country</div>
+          <div class="col-lg-9 col-md-8">USA</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Address</div>
+          <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Phone</div>
+          <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Email</div>
+          <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+        </div>
+
+      </div>
+
+      </div>
+
+      <div class="tab-pane fade pt-3" id="profile-change-password">
+        <!-- Change Password Form -->
+        <form>
+
+          <div class="row mb-3">
+            <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Action</label>
+            <div class="col-md-8 col-lg-9">
+              <select name="state" id="" class="form-control" >
+                <option value="">select action</option>
+                <option value="verified">verify</option>
+                <option value="rejected">reject</option>
+                <option value="reviewing">reviewing</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">comment</label>
+            <div class="col-md-8 col-lg-9">
+              <textarea name="" id="" cols="30" rows="10"></textarea>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">ISSIUED BY</label>
+            <div class="col-md-8 col-lg-9">
+              <select name="issue" id="" class="form-control" >
+                <option value="">Select ISSIUED Authority</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">SUBMit</button>
+          </div>
+        </form><!-- End Change Password Form -->
+
+      </div>
+
+    </div><!-- End Bordered Tabs -->
+
+  </div>
+</div>
+
+</div>
+       
+
+      
     </section>
 
   </main><!-- End #main -->
