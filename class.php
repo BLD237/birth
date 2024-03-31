@@ -192,11 +192,14 @@ class Child{
      public function getchildhieght(){
         return $this->childHeight;
      }
-     public function createchild($childid, $childFirstName, $childLastName, $childDateOfBirth, $childGender, $childPlaceOfBirth, $childWeight, $childHeight){
+     public function createchild($childid, $childFirstName, $childLastName, $childDateOfBirth, $childGender, $childPlaceOfBirth, $childWeight, $childHeight, $fatherIdCardNumber, $motherIdCardNumber){
         $sql="INSERT INTO child (childFirstName, childLastName, childDateOfBirth, childGender, childPlaceOfBirth, childWeight, childHeight)
-        VALUES ('$childFirstName', '$childLastName', '$childDateOfBirth', '$childGender', '$childPlaceOfBirth', '$childWeight', '$childHeight');";
+        VALUES ('$childid','$childFirstName', '$childLastName', '$childDateOfBirth', '$childGender', '$childPlaceOfBirth', '$childWeight', '$childHeight', '$fatherIdCardNumber', '$motherIdCardNumber');";
 
      }
+
+     $conn = new Connection();
+
 }
 class father{
     private $fatherName;

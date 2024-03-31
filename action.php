@@ -80,8 +80,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                  case 'register':
                     $applicantName = $_POST['fname'];
                     $applicantContact = $_POST['lname'];
-                    $applicantIdNumber = $_POST['applicantidnumber'];
-                    
+                    $applicantIdNumber = $_POST['applicantidnumber'];                    
+                    $applicant = new Applicantion();
+                    $applicationnumber = $applicant->generateId();
+                    $applicant->setapplicant($applicantName, $applicantContact, $applicantIdNumber, $applicationnumber);                  
                     // Child's Information
                     $childFirstName = $_POST['fname'];
                     $childLastName = $_POST['lname'];
@@ -90,8 +92,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $childPlaceOfBirth = $_POST['placeofbirth'];
                     $childWeight = $_POST['weight'];
                     $childHeight = $_POST['height'];
-                    
-                    // Father's Information
+                    $childid = $applicant->generateId();
+                    $child = new Child;
+                    $child->setchild($childid,$childFirstName, $childLastName, $childDateOfBirth, $childGender, $childPlaceOfBirth, $childWeight, $childHeight);
+                     // Father's Information
                     $fatherName = $_POST['fathername'];
                     $fatherAddress = $_POST['fatheraddress'];
                     $fatherPlaceOfBirth = $_POST['fatherplaceofbirth'];
@@ -101,6 +105,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $fatherIdCardNumber = $_POST['fatheridcard'];
                     $fatherPhone = $_POST['fatherphone'];
                     $fatherEmail = $_POST['fatheremail'];
+                    $father = new father();
+                    $father->setfather($fatehername, $fatherAddress, $fatherPlaceOfBirth, $fatherSubdivision, $fatherDateOfBirth, $fatherOccupation, $fatherIdCardNumber, $fatherEmail, $fatherPhone);
                     //mothers information
                     $motherName = $_POST['mothername'];
                     $motherAddress = $_POST['motheraddress'];
@@ -111,17 +117,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $motherIdCardNumber = $_POST['mother_idcard_number'];
                     $motherPhone = $_POST['mother_phone'];
                     $motherEmail = $_POST['mother_email'];
-                
+                    $mother = new mother();
+                    $mother->setmother($motherName, $motherAddress, $motherPlaceOfBirth, $motherSubdivision, $motherDateOfBirth, $motherOccupation, $motherIdCardNumber, $motherEmail, $motherPhone);
+                    //location
                     $nationality = $_POST['nationality'];
                     $hospitalName = $_POST['hospital_name'];
                     $region = $_POST['region'];
                     $division = $_POST['division'];
                     $town = $_POST['town'];
-                
+                    $location = new location();
+                    $location->setlocation($nationality, $hospitalName, $region, $division, $town);                
                     $witnessNationality = $_POST['witness_nationality'];
                     $witnessIdCard = $_POST['witness_idcard'];
                     $midwifeName = $_POST['midwife_name'];
                     $midwifePhone = $_POST['midwife_phone'];
+                    $witness = new midwife();
+                    $witness->setwitness($witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone);
                      break;     
         }
     }
