@@ -193,12 +193,22 @@ class Child{
         return $this->childHeight;
      }
      public function createchild($childid, $childFirstName, $childLastName, $childDateOfBirth, $childGender, $childPlaceOfBirth, $childWeight, $childHeight, $fatherIdCardNumber, $motherIdCardNumber){
-        $sql="INSERT INTO child (childFirstName, childLastName, childDateOfBirth, childGender, childPlaceOfBirth, childWeight, childHeight)
-        VALUES ('$childid','$childFirstName', '$childLastName', '$childDateOfBirth', '$childGender', '$childPlaceOfBirth', '$childWeight', '$childHeight', '$fatherIdCardNumber', '$motherIdCardNumber');";
+     $sql="INSERT INTO child_info(childFirstName, childLastName, childDateOfBirth, childGender, childPlaceOfBirth, childWeight, childHeight)
+    VALUES ('$childid','$childFirstName', '$childLastName', '$childDateOfBirth', '$childGender', '$childPlaceOfBirth', '$childWeight', '$childHeight', '$fatherIdCardNumber', '$motherIdCardNumber');";
 
-     }
+$conn = new Connection();
+$connect = $conn->connect();
+$result = $connect->query($sql);
+if($result){
+    $connect->close(); 
+    return $result;
+}else{
+  die("ERROR:".$connect->error);
+}
+ 
+ }
 
-     $conn = new Connection();
+
 
 }
 class father{
@@ -250,16 +260,16 @@ class father{
     public function getfatheremail(){
         return $this->fatherEmail;
     }
-    public function createfather($fatherName, $fatherAddress, $fatherPlaceOfBirth, $fatherSubdivision, $fatherDateOfBirth, $fatherOccupation, $fatherIdCardNumber, $fatherEmail, $fatherPhone){
-        $sql = "INSERT INTO father (fatherName, fatherAddress, fatherPlaceOfBirth, fatherSubdivision, fatherDateOfBirth, fatherOccupation, fatherIdCardNumber, fatherEmail, fatherPhone)
-        VALUES ('$fatherName', '$fatherAddress', '$fatherPlaceOfBirth', '$fatherSubdivision', '$fatherDateOfBirth', '$fatherOccupation', '$fatherIdCardNumber', '$fatherEmail', '$fatherPhone');";
+    public function createfather($fatherName, $fatherAddress, $fatherPlaceOfBirth, $fatherSubdivision, $fatherDateOfBirth, $fatherOccupation, $fatherIdCardNumber, $fatherEmail, $fatherPhone, $motherIdCardNumber){
+        $sql = "INSERT INTO fathers_info(father_name, father_address, father_place_ofb_birth, father_subdivision, father_dob, father_occupation, father_id, father_email, father_phone, mother_id)
+        VALUES ('$fatherName', '$fatherAddress', '$fatherPlaceOfBirth', '$fatherSubdivision', '$fatherDateOfBirth', '$fatherOccupation', '$fatherIdCardNumber', '$fatherEmail', '$fatherPhone', '$motherIdCardNumber');";
     }
 
 }
 class mother{
     private $motherName;
     private $motherAddress;
-    private $motherPlaceOfBirth;
+    private $motherPlaceOfBirth;    
     private $motherSubdivision;
     private $motherDateOfBirth;
     private $motherOccupation;
@@ -307,7 +317,7 @@ class mother{
         return $this->motherEmail;
     }
     public function createmother($motherName, $motherAddress, $motherPlaceOfBirth, $motherSubdivision, $motherDateOfBirth, $motherOccupation, $motherIdCardNumber, $motherEmail, $motherPhone){
-        $sql = "INSERT INTO mother (motherName, motherAddress, motherPlaceOfBirth, motherSubdivision, motherDateOfBirth, motherOccupation, motherIdCardNumber, motherEmail, motherPhone)
+        $sql = "INSERT INTO mother (mother_name, mother_address, mother_place_of_birth, mother_subdivision, mother_dob, mother_occupation, mother_id, mother_email, mother_phone)
         VALUES ('$motherName', '$motherAddress', '$motherPlaceOfBirth', '$motherSubdivision', '$motherDateOfBirth', '$motherOccupation', '$motherIdCardNumber', '$motherEmail', '$motherPhone');";
     }
 
@@ -341,22 +351,24 @@ class location{
     public function gettown(){
         return $this->town;
     }
-    public function createlocation($nationality, $hospitalName , $region,$division, $town){
-        $sql = "INSERT INTO location (nationality, hospitalName, region, division, town)
-        VALUES ('$nationality', '$hospitalName', '$region', '$division', '$town');";
+    public function createlocation($applicationNumber ,$nationality, $hospitalName , $region,$division, $town){
+        $sql = "INSERT INTO location (nationality, application_number, hospitalName, region, division, town)
+        VALUES ('$nationality',$applicationNumber, '$hospitalName', '$region', '$division', '$town');";
     }
 
 }
 class midwife{
+    public $midwifeid;
     public $witnessNationality;
     public $witnessIdCard;
     public $midwifeName;
     public $midwifePhone;
-    public function setwitness($witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone){
-        $this->witnessNationality;
-        $this->witnessIdCard;
-        $this->midwifeName;
-        $this->midwifePhone;
+    public function setwitness($midwifeid, $witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone){
+        $this->midwifeid = $$midwifeid;
+        $this->witnessNationality =$witnessNationality;
+        $this->witnessIdCard =$witnessIdCard;
+        $this->midwifeName = $midwifeName;
+        $this->midwifePhone = $midwifePhone;
     }
     public function getwitnessnationality(){
         return $this->witnessNationality;
@@ -370,36 +382,24 @@ class midwife{
     public function getmidwifephone(){
         return $this->midwifePhone;
     }
-    public function createwitness($witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone){
-        $sql = "INSERT INTO witness (witnessNationality, witnessIdCard, midwifeName, midwifePhone)
-        VALUES ('$witnessNationality', '$witnessIdCard', '$midwifeName', '$midwifePhone');";
+    public function getmidwifeid(){
+        return $this->midwifeid;
+    }
+    public function createwitness($midwifeid,$applicationNumber,$witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone){
+        $sql = "INSERT INTO witness (midwife_id,application_number,nationality, idcard_number, midwife_name, Phone)
+        VALUES ('$midwifeid''$applicationNumber',$witnessNationality', '$witnessIdCard', '$midwifeName', '$midwifePhone');";
+        $conn =  new Connection;
+        $connect = $conn->connect();
+        $result = $connect->query($sql);
+        if(!$result){
+            die("ERROR:" .$connect->error);
+        }
+        else{
+            return $result;
+        }
     }
 
 }
 
 
-
-
-$sql = "CREATE TABLE `users` (
-    `id` int(11) NOT NULL ,
-    `username` varchar(255) NOT NULL,
-    `password` varchar(255) NOT NULL,
-    `fullname` varchar(255) NOT NULL,
-    `email`    varchar(255) NOT NULL,
-    `idcard`   varchar(255) NOT NULL,
-    `level`    int(11) NOT NULL ,
-    `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-      ) ";    
-
-//   $conn = new Connection();
-//   $connect = $conn->connect();
-//   $result = $connect ->query($sql); 
-//   var_dump($result);   
-// $email = "muforbelmond20@gmail.com";
-// $conn = new Connection();
-// $connect = $conn->connect();
-// $sql = "SELECT * FROM users WHERE email ='$email' ";
-// $result = $connect->query($sql);
-        
-// var_dump($result);
 

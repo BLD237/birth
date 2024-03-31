@@ -95,6 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $childid = $applicant->generateId();
                     $child = new Child;
                     $child->setchild($childid,$childFirstName, $childLastName, $childDateOfBirth, $childGender, $childPlaceOfBirth, $childWeight, $childHeight);
+                    $child->createchild($childid, $childFirstName, $childLastName, $childDateOfBirth, $childGender, $childPlaceOfBirth, $childWeight, $childHeight, $fatherIdCardNumber, $motherIdCardNumber);
                      // Father's Information
                     $fatherName = $_POST['fathername'];
                     $fatherAddress = $_POST['fatheraddress'];
@@ -107,6 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $fatherEmail = $_POST['fatheremail'];
                     $father = new father();
                     $father->setfather($fatehername, $fatherAddress, $fatherPlaceOfBirth, $fatherSubdivision, $fatherDateOfBirth, $fatherOccupation, $fatherIdCardNumber, $fatherEmail, $fatherPhone);
+                    $father->createfather($fatherName, $fatherAddress, $fatherPlaceOfBirth, $fatherSubdivision, $fatherDateOfBirth, $fatherOccupation, $fatherIdCardNumber, $fatherEmail, $fatherPhone, $motherIdCardNumber);
                     //mothers information
                     $motherName = $_POST['mothername'];
                     $motherAddress = $_POST['motheraddress'];
@@ -119,6 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $motherEmail = $_POST['mother_email'];
                     $mother = new mother();
                     $mother->setmother($motherName, $motherAddress, $motherPlaceOfBirth, $motherSubdivision, $motherDateOfBirth, $motherOccupation, $motherIdCardNumber, $motherEmail, $motherPhone);
+                    $mother->createmother($motherName, $motherAddress, $motherPlaceOfBirth, $motherSubdivision, $motherDateOfBirth, $motherOccupation, $motherIdCardNumber, $motherEmail, $motherPhone);
                     //location
                     $nationality = $_POST['nationality'];
                     $hospitalName = $_POST['hospital_name'];
@@ -126,13 +129,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $division = $_POST['division'];
                     $town = $_POST['town'];
                     $location = new location();
-                    $location->setlocation($nationality, $hospitalName, $region, $division, $town);                
+                    $location->setlocation($nationality, $hospitalName, $region, $division, $town);       
+                    $location->createlocation($applicationNumber ,$nationality, $hospitalName , $region,$division, $town);
+                    //witness         
                     $witnessNationality = $_POST['witness_nationality'];
                     $witnessIdCard = $_POST['witness_idcard'];
                     $midwifeName = $_POST['midwife_name'];
                     $midwifePhone = $_POST['midwife_phone'];
                     $witness = new midwife();
-                    $witness->setwitness($witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone);
+                    $witness->setwitness($midwifeid, $applicationnumber,$witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone);
+
+
                      break;     
         }
     }
