@@ -117,7 +117,7 @@ private function setsession($dbid,$dbusername,$dbpassword,$dbfullname,$dbemail,$
 
    }
 }
-class Applicantion{
+class Application{
     private $applicationNumber;
     private $applicantName;
     private $applicantContact;
@@ -155,6 +155,17 @@ class Applicantion{
             die("ERROR: ".$connect->error);
         }
 
+    }
+    public function getapplications(){
+        $sql = "SELECT * FROM application";
+        $conn = new Connection();
+        $connect = $conn->connect();
+        $result = $connect->query($sql);
+        if($result){
+            return $result;
+        }else{
+            die("ERROR:" .$connect->error);
+        }
     }
 
 }

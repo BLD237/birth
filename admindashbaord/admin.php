@@ -1,3 +1,21 @@
+<?php
+include 'class.php';
+$general = new general();
+
+if(!session_start()){
+  session_start();
+}
+if($_SESSION['bcglevel']==1){
+
+}else if($_SESSION['bcglevel']==2){
+  include "user.php";
+}else{
+  header("LOCATION:  /birth/index.php?reference=notlogin");
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -267,6 +285,11 @@
               <i class="bi bi-circle"></i><span>Manage users</span>
             </a>
           </li>
+          <li>
+            <a href="registral.php">
+              <i class="bi bi-circle"></i><span>Add registral</span>
+            </a>
+          </li>
           
         </ul>
 
@@ -288,7 +311,7 @@
       </li><!-- End Profile Page Nav -->   
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/birthregistration/index.php">
+        <a class="nav-link collapsed" href="birthregistration.php">
           <i class="bi bi-card-list"></i>
           <span>Issue birth certificate</span>
         </a>
@@ -363,8 +386,8 @@
                       <i class="bi bi-layout-text-window-reverse"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">145</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                      <h6><?php echo $count = $general->counter()?></h6>
+                      <span class="text-success small pt-1 fw-bold"><?php echo $count = $general->counter()?></span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                     </div>
                   </div>
@@ -398,8 +421,8 @@
                       <i class="bi bi-layout-text-window-reverse"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>264</h6>
-                      <span class="text-success small pt-1 fw-bold">264</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                      <h6><?php echo $count = $general->counter()?></h6>
+                      <span class="text-success small pt-1 fw-bold"><?php echo $count = $general->counter()?></span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                     </div>
                   </div>
@@ -434,8 +457,8 @@
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>1244</h6>
-                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                      <h6><?php echo $count = $general->counter()?></h6>
+                      <span class="text-danger small pt-1 fw-bold"><?php echo $count = $general->counter()?></span> <span class="text-muted small pt-2 ps-1">decrease</span>
 
                     </div>
                   </div>
@@ -598,43 +621,7 @@
               </ul>
             </div>
 
-            <div class="card-body pb-0">
-              <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
-
-              <div class="news">
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-1.jpg" alt="">
-                  <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                  <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-2.jpg" alt="">
-                  <h4><a href="#">Quidem autem et impedit</a></h4>
-                  <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-3.jpg" alt="">
-                  <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
-                  <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-4.jpg" alt="">
-                  <h4><a href="#">Laborum corporis quo dara net para</a></h4>
-                  <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-5.jpg" alt="">
-                  <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
-                  <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
-                </div>
-
-              </div><!-- End sidebar recent posts-->
-
-            </div>
+            
           </div><!-- End News & Updates -->
 
         </div><!-- End Right side columns -->

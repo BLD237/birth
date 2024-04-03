@@ -9,7 +9,7 @@ if($_SESSION['bcglevel']==1){
 }else{
   header("LOCATION:  /birth/index.php?reference=notlogin");
 }
-
+include "class.php";
 ?>
 
 
@@ -388,17 +388,34 @@ if($_SESSION['bcglevel']==1){
                         <th scope="col">Action</th>
                       </tr>
                     </thead>
-                    <tbody>                      
-                      <tr>
-                        <th scope="row"><a href="#">1</a></th>
-                        <td>11122233521</td>
-                        <td>MUFOR BELMOND</td>
-                        <td>MUFOR MARK</td>
-                        <td>25/04/2015</td>
-                        <td>Bamenda</td>
-                        <td><span class="badge bg-success">verified</span></td>
-                        <td><a class="btn btn-primary" href="">VIEW</a></td>
-                      </tr>
+                    <tbody> 
+                      <?php     
+                        $sql = "SELECT * FROM application";
+                        $conn = new Connection();
+                        $connect = $conn->connect();
+                        $result = $connect->query($sql);
+                         $i = 0;
+                        while($row= $result->fetch_assoc()){
+                          $i = $i +1;
+                          $applicationnumber = $row['application_number'];
+                          $applicantName = $row['applicant_name'];
+                          $childname = $row['child_name'];
+                          $dob = $row['child_dob'];
+                          $town = $row['child_place_of_birth'];
+                          $status = $row['status'];
+                         echo "                
+                      <tr>                      
+                        <th scope='row'><a href='#'>$i</a></th>
+                        <td>$applicationnumber</td>
+                        <td>$applicantName</td>
+                        <td>$childname</td>
+                        <td>$dob</td>
+                        <td>$town</td>
+                        <td><span class='badge bg-success'>$status</span></td>
+                        <td><a class='btn btn-primary' href='view.php?reference=$applicationnumber'>VIEW</a></td>
+                      </tr>";
+                        }
+                      ?>
                     </tbody>
                   </table>
 

@@ -9,6 +9,26 @@ if($_SESSION['bcglevel']==1){
 }else{
   header("LOCATION:  /birth/index.php?reference=notlogin");
 }
+include 'class.php';
+
+if(isset($_GET)){
+
+  $applicationnumber = $_GET['reference'];
+  
+
+  
+}
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (isset($_POST['action']) && !empty($_POST['action'])) {
+  $status = $_POST['status'];
+  $app = new Applicantion();
+  $result = $app->update($applicationnumber, $status);
+}
+}
+
+
 
 ?>
 
@@ -378,47 +398,145 @@ if($_SESSION['bcglevel']==1){
       </li>
 
     </ul>
+    <?php
+    if(isset($_GET)){
+
+  $applicationnumber = $_GET['reference'];
+  $sql = "SELECT * FROM application WHERE `application_number` = ' $applicationnumber'";
+ 
+  $conn = new Connection();
+  $connect = $conn->connect();
+  $result = $connect->query($sql);
+  while($row = $result->fetch_assoc()){
+  $childid = $row['child_id'];
+  $childname = $row['child_name']; 
+  $childdob = $row['child_dob'];
+  $childplaceOfBirth = $row['child_place_of_birth'];
+  $fatherid = $row['father_id'];
+  $fathername = $row['father_name'];
+  $motherid = $row['mother_id'];
+  $mothername = $row['mother_name']; 
+  }
+
+  $sql = "SELECT * FROM fathers_info where `father_id` ='$fatherid'";
+  $result = $connect->query($sql);
+while($row = $result->fetch_assoc()){  
+  $fatheraddress = $row['father_address'];
+  $fatheroccupation = $row['father_occupation'];
+  $fatherdob = $row['father_dob'];
+  $fatherplaceofbirth = $row['father_place_of_birth'];
+  $fathersubdivision = $row['father_subdivision'];
+  $fatherphone = $row['father_phone'];
+  $fatheremail = $row['father_email'];
+          }
+
+          $sql = "SELECT * FROM mothers_info where `mother_id` ='$motherid'";
+          $result = $connect->query($sql);
+          while($row = $result->fetch_assoc()){
+            $mothername = $row['mother_name'];
+            $motheroccupation = $row['mother_occupation'];
+            $motherdob = $row['mother_dob'];
+            $motherplaceofbirth = $row['mother_place_of_birth'];
+            $mothersubdivision = $row['mother_subdivision'];
+            $motheradress = $row['mother_address'];
+            $motherphone = $row['mother_phone'];
+            $motheremail = $row['mother_email'];
+ 
+          }
+          $sql = "SELECT * FROM midwife WHERE `application_number` = '$applicationnumber'";
+          $result = $connect ->query($sql);
+          while($row = $result->fetch_assoc()){
+            $witnessname = $row['midwife_name'];
+            $witnessid = $row['idcard_number'];
+            $witnesscontact = $row['phone'];       
+
+          }
+          $sql = "SELECT * FROM location WHERE `application_number`= '$applicationnumber'";
+          $result = $connect->query($sql);
+          while($row = $result->fetch_assoc()){
+            $region = $row['region'];
+            $town = $row['town'];
+          }
+
+        }          
+  
+
+    
+?>
+
+
+
+
+
+
+
+
+
     <div class="tab-content pt-2">
 
       <div class="tab-pane fade show active profile-overview" id="profile-overview">
-        <h5 class="card-title">About</h5>
-        <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
-
-        <h5 class="card-title">Profile Details</h5>
-
+        <h5 class="card-title">Application</h5>
+        <p class="small fst-italic"></p>
         <div class="row">
-          <div class="col-lg-3 col-md-4 label ">Full Name</div>
-          <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+          <div class="col-lg-3 col-md-4 label ">APPLICATION NUMBER</div>
+          <div class="col-lg-9 col-md-8"><?php echo "$applicationnumber" ?></div>
         </div>
+<br>
+        <h5 class="card-title">Child information</h5>
 
         <div class="row">
-          <div class="col-lg-3 col-md-4 label">Company</div>
-          <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+          <div class="col-lg-3 col-md-4 label ">First name</div>
+          <div class="col-lg-9 col-md-8"><?php echo $childname?></div>
         </div>
-
+        <br>
         <div class="row">
-          <div class="col-lg-3 col-md-4 label">Job</div>
-          <div class="col-lg-9 col-md-8">Web Designer</div>
+          <div class="col-lg-3 col-md-4 label">Last name</div>
+          <div class="col-lg-9 col-md-8">last name here</div>
         </div>
-
+       <br>
         <div class="row">
-          <div class="col-lg-3 col-md-4 label">Country</div>
-          <div class="col-lg-9 col-md-8">USA</div>
+          <div class="col-lg-3 col-md-4 label">date of birth</div>
+          <div class="col-lg-9 col-md-8"><?php echo $childdob?> </div>
         </div>
-
+          <br>
         <div class="row">
-          <div class="col-lg-3 col-md-4 label">Address</div>
-          <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+          <div class="col-lg-3 col-md-4 label">Place of birth</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $childplaceOfBirth ?> </div>
         </div>
-
+            <br>
         <div class="row">
-          <div class="col-lg-3 col-md-4 label">Phone</div>
-          <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+          <div class="col-lg-3 col-md-4 label">Father's Name</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $fathername ?></div>
         </div>
-
+         <br>
         <div class="row">
-          <div class="col-lg-3 col-md-4 label">Email</div>
-          <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+          <div class="col-lg-3 col-md-4 label">Mother's name</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $mothername ?></div>
+        </div>
+         <br>
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">witness name</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $witnessname ?></div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">witness Id</div>
+          <div class="col-lg-9 col-md-8"><?php echo $witnessid?></div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Witness contact</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $witnesscontact ?></div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Region</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $region ?></div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Town</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $town ?></div>
         </div>
 
       </div>
@@ -428,44 +546,51 @@ if($_SESSION['bcglevel']==1){
         <!-- Profile Edit Form -->
       <!-- End Profile Edit Form -->
       <div class="tab-pane fade show active profile-overview" id="profile-overview">
-        <h5 class="card-title">About</h5>
-        <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
-
-        <h5 class="card-title">Profile Details</h5>
-
+        <h5 class="card-title">Father's information</h5>
+       <br>
         <div class="row">
-          <div class="col-lg-3 col-md-4 label ">Full Name</div>
-          <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+          <div class="col-lg-3 col-md-4 label "> Father Name</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $fathername ?></div>
         </div>
-
+        <br>
         <div class="row">
-          <div class="col-lg-3 col-md-4 label">Company</div>
-          <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
-        </div>
-
+          <div class="col-lg-3 col-md-4 label "> Father's id</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $fatherid ?></div>
+      </div>
+<br>
         <div class="row">
-          <div class="col-lg-3 col-md-4 label">Job</div>
-          <div class="col-lg-9 col-md-8">Web Designer</div>
+          <div class="col-lg-3 col-md-4 label">Father's Occupation</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $fatheroccupation ?></div>
         </div>
-
+<br>
         <div class="row">
-          <div class="col-lg-3 col-md-4 label">Country</div>
-          <div class="col-lg-9 col-md-8">USA</div>
+          <div class="col-lg-3 col-md-4 label">Father's DOB</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $fatherdob ?></div>
         </div>
-
+<br>
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Place of birth</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $fatherplaceofbirth ?></div>
+        </div>
+<br>
+<div class="row">
+          <div class="col-lg-3 col-md-4 label">subdivision</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $fathersubdivision ?></div>
+        </div>
+<br>
         <div class="row">
           <div class="col-lg-3 col-md-4 label">Address</div>
-          <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $fatheraddress ?></div>
         </div>
-
+<br>
         <div class="row">
           <div class="col-lg-3 col-md-4 label">Phone</div>
-          <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $fatherphone ?></div>
         </div>
-
+<br>
         <div class="row">
           <div class="col-lg-3 col-md-4 label">Email</div>
-          <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $fatheremail?></div>
         </div>
 
       </div>
@@ -476,45 +601,52 @@ if($_SESSION['bcglevel']==1){
 <!-- mother info -->
         <!-- Settings Form -->
        <!-- End settings Form -->
-       <div class="tab-pane fade show active profile-overview" id="profile-overview">
-        <h5 class="card-title">About</h5>
-        <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
-
-        <h5 class="card-title">Profile Details</h5>
-
+       <div class="tab-pane fade show active profile-overview" id="profile-overview">   
+       <h5 class="card-title">Mother's information</h5>       
+        <br>
         <div class="row">
-          <div class="col-lg-3 col-md-4 label ">Full Name</div>
-          <div class="col-lg-9 col-md-8">Kevin Anderson</div>
-        </div>
-
+          <div class="col-lg-3 col-md-4 label "> Mother's id</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $motherid ?></div>
+      </div>
+<br>
         <div class="row">
-          <div class="col-lg-3 col-md-4 label">Company</div>
-          <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+          <div class="col-lg-3 col-md-4 label "> Mother's Name</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $mothername ?></div>
         </div>
-
+<br>
         <div class="row">
-          <div class="col-lg-3 col-md-4 label">Job</div>
-          <div class="col-lg-9 col-md-8">Web Designer</div>
+          <div class="col-lg-3 col-md-4 label">Mother's Occupation</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $motheroccupation ?></div>
         </div>
-
+<br>
         <div class="row">
-          <div class="col-lg-3 col-md-4 label">Country</div>
-          <div class="col-lg-9 col-md-8">USA</div>
+          <div class="col-lg-3 col-md-4 label">Mother's DOB</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $motherdob ?></div>
         </div>
-
+<br>
+        <div class="row">
+          <div class="col-lg-3 col-md-4 label">Place of birth</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $motherplaceofbirth ?></div>
+        </div>
+<br>
+<div class="row">
+          <div class="col-lg-3 col-md-4 label">Subdivision</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $mothersubdivision ?></div>
+        </div>
+<br>
         <div class="row">
           <div class="col-lg-3 col-md-4 label">Address</div>
-          <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $motheradress ?></div>
         </div>
-
+<br>
         <div class="row">
           <div class="col-lg-3 col-md-4 label">Phone</div>
-          <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $motherphone ?></div>
         </div>
-
+<br>
         <div class="row">
           <div class="col-lg-3 col-md-4 label">Email</div>
-          <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+          <div class="col-lg-9 col-md-8"><?php echo  $motheremail ?></div>
         </div>
 
       </div>
@@ -523,12 +655,12 @@ if($_SESSION['bcglevel']==1){
 
       <div class="tab-pane fade pt-3" id="profile-change-password">
         <!-- Change Password Form -->
-        <form>
+        <form action="" method="post">
 
           <div class="row mb-3">
             <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Action</label>
             <div class="col-md-8 col-lg-9">
-              <select name="state" id="" class="form-control" >
+              <select name="status" id="" class="form-control" >
                 <option value="">select action</option>
                 <option value="verified">verify</option>
                 <option value="rejected">reject</option>
@@ -537,24 +669,29 @@ if($_SESSION['bcglevel']==1){
             </div>
           </div>
 
-          <div class="row mb-3">
-            <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">comment</label>
-            <div class="col-md-8 col-lg-9">
-              <textarea name="" id="" cols="30" rows="10"></textarea>
-            </div>
-          </div>
 
           <div class="row mb-3">
             <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">ISSIUED BY</label>
             <div class="col-md-8 col-lg-9">
               <select name="issue" id="" class="form-control" >
                 <option value="">Select ISSIUED Authority</option>
+                <?php 
+                  $sql = "SELECT * FROM  issue_authority";
+                  $conn =  new Connection;
+                  $connect = $conn->connect();
+                  $result = $connect->query($sql);
+                  while($row = $result->fetch_assoc()){
+                    $name = $row['authority_name'];
+                    $id = $row['issue_id'];
+                    echo"<option value='$id'>$name</option>";
+                  }?>
+               
               </select>
             </div>
           </div>
 
           <div class="text-center">
-            <button type="submit" class="btn btn-primary">SUBMit</button>
+            <button type="submit" name="action" class="btn btn-primary" value="update" >SUBMit</button>
           </div>
         </form><!-- End Change Password Form -->
 

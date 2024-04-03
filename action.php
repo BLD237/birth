@@ -155,6 +155,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        
 
                      break;     
+                     case 'registral':
+                        $id = $_POST['id'];
+                        $name = $_POST['name'];
+                        $address = $_POST['address'];
+                        $contact = $_POST['contact'];
+                      
+                        
+                        break;
         }
     }
 }
