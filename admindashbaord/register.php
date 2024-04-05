@@ -1,3 +1,18 @@
+<?php
+if($_GET){
+  $reference = $_GET["reference"];
+  if($reference== "emailexist"){
+  echo"<script>alert('Email Already Taken')</script>";
+  }
+  else if($reference== "faild"){
+    
+  }
+  }
+?>
+
+
+
+
 <!DOCTYPE html>
 <!-- Designined by CodingLab - youtube.com/codinglabyt -->
 <html lang="en" dir="ltr">

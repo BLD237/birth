@@ -180,7 +180,7 @@ if($result){
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+          <i class="bi bi-person"></i>
             <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $_SESSION['bcgusername'] ?></span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -293,15 +293,11 @@ if($result){
             </a>
           </li>
           <li>
-            <a href="charts-apexcharts.html">
+            <a href="manageusers.php">
               <i class="bi bi-circle"></i><span>Manage Admin users</span>
             </a>
           </li>
-          <li>
-            <a href="charts-echarts.html">
-              <i class="bi bi-circle"></i><span>Manage users</span>
-            </a>
-          </li>
+          
           <li>
             <a href="registral.php">
               <i class="bi bi-circle"></i><span>Add registral</span>

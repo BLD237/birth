@@ -16,7 +16,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 case 'notlogin':
                     include"index1.php";
                     echo"<script>alert('Login Required to acceess this page')</script>";
-                    break;     
+                    break;  
+                    case 'loginerror':
+                        echo"<script>alert('INVALID CREDENTIALS')</script>";
+                        header("refresh:1;url=index1.php");
+                        break;   
         }
     }
 }

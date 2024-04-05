@@ -1,4 +1,5 @@
 <?php
+include "class.php";
 if(!session_start()){
   session_start();
 }
@@ -84,44 +85,61 @@ if($_SESSION['bcglevel']==1){
           </a>
         </li><!-- End Search Icon-->
 
-        <li class="nav-item dropdown">
+        <?php   
+                  
+                  $sql = "SELECT * FROM application WHERE status = ''";
+                  $conn = new Connection();
+                  $connect = $conn->connect();
+                  $result = $connect->query($sql);
+                   $i = 0;
+                  while($row= $result->fetch_assoc()){
+                    $i = $i +1;
+                    $applicationnumber = $row['application_number'];
+                    $applicantName = $row['applicant_name'];
+                    $childname = $row['child_name'];
+                    $dob = $row['child_dob'];
+                    $town = $row['child_place_of_birth'];
+                    $status = $row['status'];
+                               
+                
+                  }
+                ?>
+  <li class="nav-item dropdown">
 
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-bell"></i>
-            <span class="badge bg-primary badge-number">4</span>
-          </a><!-- End Notification Icon -->
+    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+      <i class="bi bi-bell"></i>
+      <span class="badge bg-primary badge-number"><?php echo $i?></span>
+    </a><!-- End Notification Icon -->
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-            <li class="dropdown-header">
-              You have 4 new notifications
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+      <li class="dropdown-header">
+        You have <?php echo $i?> new notifications
+        <a href="newapplications.php"><span class="badge rounded-pill bg-primary p-2 ms-2">View Applications</span></a>
+      </li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
 
-            <li class="notification-item">
-              <i class="bi bi-exclamation-circle text-warning"></i>
-              <div>
-                <h4>Lorem Ipsum</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>30 min. ago</p>
-              </div>
-            </li>
+      <li class="notification-item">
+        <i class="bi bi-exclamation-circle text-warning"></i>
+        <div>
+          <h4>Admin!</h4>
+          <p>There are <?php echo $i?> New apllications </p>
+          
+        </div>
+      </li>
 
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li class="dropdown-footer">
-              <a href="#">Show all notifications</a>
-            </li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+     
 
-          </ul><!-- End Notification Dropdown Items -->
+    </ul><!-- End Notification Dropdown Items -->
 
-        </li><!-- End Notification Nav -->
+  </li><!-- End Notification Nav -->
 
         <li class="nav-item dropdown">
 
@@ -163,7 +181,7 @@ if($_SESSION['bcglevel']==1){
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+          <i class="bi bi-person"></i>
             <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $_SESSION['bcgusername'] ?></span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -227,7 +245,7 @@ if($_SESSION['bcglevel']==1){
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="admin.php">
+      <a class="nav-link " href="index.php">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -248,7 +266,7 @@ if($_SESSION['bcglevel']==1){
             </a>
           </li>
           <li>
-            <a href="rejected.php">
+            <a href="verified.php">
               <i class="bi bi-circle"></i><span>Verified Applications</span>
             </a>
           </li>
@@ -276,7 +294,7 @@ if($_SESSION['bcglevel']==1){
             </a>
           </li>
           <li>
-            <a href="charts-apexcharts.html">
+            <a href="manageusers.php">
               <i class="bi bi-circle"></i><span>Manage Admin users</span>
             </a>
           </li>
@@ -305,12 +323,6 @@ if($_SESSION['bcglevel']==1){
         </a>
       </li><!-- End Profile Page Nav -->   
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="/birthregistration/index.php">
-          <i class="bi bi-card-list"></i>
-          <span>Issue birth certificate</span>
-        </a>
-      </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="logout.php">
@@ -390,8 +402,8 @@ if($_SESSION['bcglevel']==1){
                     </thead>
                     <tbody>                      
                     <?php   
-                    include 'class.php'; 
-                        $sql = "SELECT * FROM application";
+                  
+                        $sql = "SELECT * FROM application WHERE status ='rejected'";
                         $conn = new Connection();
                         $connect = $conn->connect();
                         $result = $connect->query($sql);
@@ -412,7 +424,7 @@ if($_SESSION['bcglevel']==1){
                         <td>$childname</td>
                         <td>$dob</td>
                         <td>$town</td>
-                        <td><span class='badge bg-success'>$status</span></td>
+                        <td><span class='badge bg-danger'>$status</span></td>
                         <td><a class='btn btn-primary' href='view.php?reference=$applicationnumber'>VIEW</a></td>
                       </tr>";
                         }

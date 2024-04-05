@@ -282,6 +282,19 @@ class father{
     public function getfatheremail(){
         return $this->fatherEmail;
     }
+    public function checkfather( $fatherIdCardNumber){
+        $sql = "SELECT * FROM fathers_info WHERE `father_id`='$fatherIdCardNumber'";
+        $conn = new Connection();
+        $connect = $conn -> connect();
+        $result = $connect->query($sql);
+        if($result){
+            return $result;
+        }else{
+            echo 3;
+            die("ERROR:" .$connect->error);
+        }
+
+    }
     public function createfather($fatherName, $fatherAddress, $fatherPlaceOfBirth, $fatherSubdivision, $fatherDateOfBirth, $fatherOccupation, $fatherIdCardNumber, $fatherEmail, $fatherPhone, $motherIdCardNumber){
         $sql = "INSERT INTO fathers_info(father_name, father_address, father_place_of_birth, father_subdivision, father_dob, father_occupation, father_id, father_email, father_phone, mother_id)
         VALUES ('$fatherName', '$fatherAddress', '$fatherPlaceOfBirth', '$fatherSubdivision', '$fatherDateOfBirth', '$fatherOccupation', '$fatherIdCardNumber', '$fatherEmail', '$fatherPhone', '$motherIdCardNumber');";
@@ -347,6 +360,19 @@ class mother{
     }
     public function getmotheremail(){
         return $this->motherEmail;
+    }
+    public function checkmother( $motherIdCardNumber){
+        $sql = "SELECT * FROM mothers_info WHERE `mother_id` = '$motherIdCardNumber'";
+        $conn = new Connection();
+        $connect = $conn -> connect();
+        $result = $connect->query($sql);
+        if($result){
+            return $result;
+        }else{
+            echo 3;
+            die("ERROR:" .$connect->error);
+        }
+
     }
     public function createmother($motherName, $motherAddress, $motherPlaceOfBirth, $motherSubdivision, $motherDateOfBirth, $motherOccupation, $motherIdCardNumber, $motherEmail, $motherPhone){
         $sql = "INSERT INTO mothers_info(mother_name, mother_address, mother_place_of_birth, mother_subdivision, mother_dob, mother_occupation, mother_id, mother_email, mother_phone)
@@ -450,6 +476,26 @@ class midwife{
         else{
             return $result;
         }
+    }
+
+}
+class message{
+    public function send($fname, $lname, $email, $mesage, $status){
+        $sql = "INSERT INTO messages(fname, lname, email, message, status)
+        value('$fname', '$lname', '$email', '$mesage', '$status')";
+         $conn =  new Connection;
+         $connect = $conn->connect();
+         $result = $connect->query($sql);
+         if(!$result){
+             echo 6;
+             die("ERROR:" .$connect->error);
+ 
+         }
+         else{
+             return $result;
+         }
+
+
     }
 
 }

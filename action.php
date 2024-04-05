@@ -18,9 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     session_start();
                 }
                     if($_SESSION['bcglevel'] == 1){
-                       header("refresh:1;url=admindashbaord/index.php");
+                       header("refresh:0;url=admindashbaord/index.php");
                     }else{
-                         header("refresh:1;url=index.php");
+                         header("refresh:0;url=admindashbaord/index.php");
                     }    
                 }else{
                     header("refresh:1; url=index.php?reference=loginerror");
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           
                 break;
              
-            case 'signup':
+            case 'AdminRegister':
                 $user = new User();
                     $username = $_POST['username'];
                     $fullname = $_POST['fullname'];
@@ -39,24 +39,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $password = $_POST['password'];
                     $gender = $_POST['gender'];
                     $idcard = $_POST['idcard']; 
-                    $level = 2;
+                    $level = 1;
                     $password = md5($password); 
                     $result=$user->selectuser($username, $email, $password);
                     if($row =$result->fetch_assoc() > 0){
-                        header("refresh:1;url=signup/index.php?reference=emailexist");
+                        
+                        header("refresh:0;url=admindashbaord/register.php?reference=emailexist");
 
                     } else{                                  
                     $user->setuser($username, $password, $fullname, $email,  $phone, $idcard, $gender, $level);  
                     $result = $user->signup($username, $password, $fullname, $email, $phone, $idcard, $gender, $level);  
                     if($result){
-                        header("refresh:1;url=index.php");
+                        header("refresh:1;url=admindashbaord/index.php");
                     }   
                     else{
                         
                     } 
                 } 
                 break; 
-            case 'AdminRegister':
+            case 'test':
                     $username = $_POST['username'];
                     $fullname = $_POST['fullname'];
                     $email    = $_POST['email'];
@@ -81,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $applicantName = $_POST['applicantname'];
                     $applicantContact = $_POST['applicantcontact'];
                     $applicantIdNumber = $_POST['applicantidnumber'];                    
-                    $applicant = new Applicantion();
+                    $applicant = new Application();
                     $applicationnumber = $applicant->generateId();
                     $applicant->setapplicant($applicantName, $applicantContact, $applicantIdNumber, $applicationnumber);                  
                     // Child's Information
@@ -140,14 +141,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $witness = new midwife();
                     $witness->setwitness($midwifeid,$witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone);
                     $child->createchild($childid,$applicationnumber, $childFirstName, $childLastName, $childDateOfBirth, $childGender, $childPlaceOfBirth, $childWeight, $childHeight, $fatherIdCardNumber, $motherIdCardNumber);
+                    $result = $father->checkfather( $fatherIdCardNumber);
+                    if($rows = $result->fetch_assoc()>0){
+
+                    }else{  
                     $father->createfather($fatherName, $fatherAddress, $fatherPlaceOfBirth, $fatherSubdivision, $fatherDateOfBirth, $fatherOccupation, $fatherIdCardNumber, $fatherEmail, $fatherPhone, $motherIdCardNumber);
-                    $mother->createmother($motherName, $motherAddress, $motherPlaceOfBirth, $motherSubdivision, $motherDateOfBirth, $motherOccupation, $motherIdCardNumber, $motherEmail, $motherPhone);
+                    }
+                    $result = $mother->checkmother( $motherIdCardNumber);
+                    if($rows = $result->fetch_assoc()>0){
+
+                    }else{  
+                        $mother->createmother($motherName, $motherAddress, $motherPlaceOfBirth, $motherSubdivision, $motherDateOfBirth, $motherOccupation, $motherIdCardNumber, $motherEmail, $motherPhone);
+                     }        
+                    
+                    
                     $location->createlocation($applicationnumber ,$nationality, $hospitalName , $region,$division, $town);
                     $witness->createwitness($midwifeid,$applicationnumber,$witnessNationality, $witnessIdCard, $midwifeName, $midwifePhone);
                    
                     $result = $applicant->createapplication($applicationnumber, $applicantName, $applicantContact, $applicantIdNumber, $childid, $childLastName, $childDateOfBirth, $childPlaceOfBirth, $fatherIdCardNumber , $fatherName, $fatherDateOfBirth, $fatherPlaceOfBirth, $motherIdCardNumber,$motherDateOfBirth , $motherPlaceOfBirth);
                     if($result){
-                       header("LOCATION: admindashbaord/index.php?reference=applicatonsubmited");
+                        
+                       header("LOCATION:contact.php?reference=applicatonsubmited&&applicationnumber=$applicationnumber&&name=$applicantName&&child=$childFirstName");
                     }else{
                         echo "faild";
                     }
@@ -159,8 +173,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $id = $_POST['id'];
                         $name = $_POST['name'];
                         $address = $_POST['address'];
-                        $contact = $_POST['contact'];
-                      
+                        $contact = $_POST['contact'];                     
+                        
+                        break;
+
+
+                    case'send':
+                        
+                    $fname = $_POST['fname'];
+                    $lname = $_POST['lname'];
+                    $email = $_POST['email'];
+                    $mesage = $_POST['message'];
+                    $status = 'unread';
+                    $message = new message();
+                    $result = $message->send($fname, $lname, $email, $mesage, $status);
+                    if($result){
+                        header("LOCATION: help.php?reference=sent");
+                    }
                         
                         break;
         }

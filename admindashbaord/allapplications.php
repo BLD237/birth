@@ -1,4 +1,5 @@
 <?php
+include "class.php";
 if(!session_start()){
   session_start();
 }
@@ -9,7 +10,18 @@ if($_SESSION['bcglevel']==1){
 }else{
   header("LOCATION:  /birth/index.php?reference=notlogin");
 }
-include "class.php";
+
+$sql = "SELECT * FROM messages WHERE status = 'unread'";
+$conn = new Connection();
+$connect = $conn->connect();
+$result = $connect->query($sql);
+ $i = 0;
+ $m = 0;
+while($row= $result->fetch_assoc()){
+  $m = $m +1;           
+
+}
+
 ?>
 
 
@@ -84,17 +96,31 @@ include "class.php";
           </a>
         </li><!-- End Search Icon-->
 
+        
+          <?php   
+                  
+                        $sql = "SELECT * FROM application WHERE status = ''";
+                        $conn = new Connection();
+                        $connect = $conn->connect();
+                        $result = $connect->query($sql);
+                         $i = 0;
+                        while($row= $result->fetch_assoc()){
+                          $i = $i +1;
+                      
+                      
+                        }
+                      ?>
         <li class="nav-item dropdown">
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-bell"></i>
-            <span class="badge bg-primary badge-number">4</span>
+            <span class="badge bg-primary badge-number"><?php echo $i?></span>
           </a><!-- End Notification Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
             <li class="dropdown-header">
-              You have 4 new notifications
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+              You have <?php echo $i?> new notifications
+              <a href="newapplications.php"><span class="badge rounded-pill bg-primary p-2 ms-2">View Applications</span></a>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -103,9 +129,9 @@ include "class.php";
             <li class="notification-item">
               <i class="bi bi-exclamation-circle text-warning"></i>
               <div>
-                <h4>Lorem Ipsum</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>30 min. ago</p>
+                <h4>Admin!</h4>
+                <p>There are <?php echo $i?> New apllications </p>
+                
               </div>
             </li>
 
@@ -115,9 +141,7 @@ include "class.php";
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li class="dropdown-footer">
-              <a href="#">Show all notifications</a>
-            </li>
+           
 
           </ul><!-- End Notification Dropdown Items -->
 
@@ -127,28 +151,40 @@ include "class.php";
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-chat-left-text"></i>
-            <span class="badge bg-success badge-number">3</span>
+            <span class="badge bg-success badge-number"><?php echo $m?></span>
           </a><!-- End Messages Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
             <li class="dropdown-header">
-              You have 3 new messages
+              You have <?php echo $m?> new messages
               <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
             </li>
             <li>
               <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+              <?php 
+                  $sql = "SELECT * FROM messages WHERE status = 'unread'";
+                  $conn = new Connection();
+                  $connect = $conn->connect();
+                  $result = $connect->query($sql);
+                   $i = 0;
+                   $m = 0;
+                  while($row= $result->fetch_assoc()){
+                    $m = $m +1;           
+                  $name = $row['email'];
+                  $message = $row['message'];
+                  
+            echo "<li class='message-item'>
+              <a href='#'>
+              <i class='bi bi-person'></i>
                 <div>
-                  <h4>Maria Hudson</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <h4>$name</h4>
+                  <p>$message...</p>
                   <p>4 hrs. ago</p>
                 </div>
               </a>
-            </li>           
+            </li>";
+                  }
+            ?>         
               <hr class="dropdown-divider">
             </li>
 
@@ -163,7 +199,7 @@ include "class.php";
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+          <i class="bi bi-person"></i>
             <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $_SESSION['bcgusername'] ?></span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -227,7 +263,7 @@ include "class.php";
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="admin.php">
+      <a class="nav-link " href="index.php">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -248,7 +284,7 @@ include "class.php";
             </a>
           </li>
           <li>
-            <a href="rejected.php">
+            <a href="verified.php">
               <i class="bi bi-circle"></i><span>Verified Applications</span>
             </a>
           </li>
@@ -276,7 +312,7 @@ include "class.php";
             </a>
           </li>
           <li>
-            <a href="charts-apexcharts.html">
+            <a href="manageusers.php">
               <i class="bi bi-circle"></i><span>Manage Admin users</span>
             </a>
           </li>
@@ -305,13 +341,7 @@ include "class.php";
         </a>
       </li><!-- End Profile Page Nav -->   
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="/birthregistration/index.php">
-          <i class="bi bi-card-list"></i>
-          <span>Issue birth certificate</span>
-        </a>
-      </li><!-- End Register Page Nav -->
-
+     
       <li class="nav-item">
         <a class="nav-link collapsed" href="logout.php">
           <i class="bi bi-box-arrow-in-left"></i>

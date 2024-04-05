@@ -177,8 +177,7 @@ form .user-details .input-box{
         
         </div>
         
-        <div class="button">
-          <a href="/birth/signup/index.php">Dont have and account yet</a>
+        <div class="button">          
           <input type="submit" value="login" name="action" >
         </div>
       </form>

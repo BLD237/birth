@@ -44,9 +44,7 @@
 		
     </head>
     <body>
-	
-		<!-- Preloader -->
-        <div class="preloader">
+	<div class="preloader">
             <div class="loader">
                 <div class="loader-outter"></div>
                 <div class="loader-inner"></div>
@@ -59,32 +57,22 @@
                 </div>
             </div>
         </div>
-        <!-- End Preloader -->
-		
-	
-	
 		<!-- Header Area -->
 		<header class="header" >
 			<!-- Topbar -->
 			<div class="topbar">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-6 col-md-5 col-12">
-							<!-- Contact -->
-							
 							<!-- End Contact -->
-						</div>
-						<div class="col-lg-6 col-md-7 col-12">
 							<!-- Top Contact -->
 							<ul class="top-contact">
-								<li><i class="fa fa-phone"></i>+237-000-000-000</li>
-								<li><i class="fa fa-envelope"></i><a href="mailto:bcg@surport.com<">bcg@surport.com</a></li>
+								<li><i class="fa fa-phone"></i>+237 (enter company number)</li>
+								<li><i class="fa fa-envelope"></i><a href="companyemail@gmail.com">companyname@BCMS.com</a></li>
 							</ul>
 							<!-- End Top Contact -->
 						</div>
 					</div>
 				</div>
-			</div>
 			<!-- End Topbar -->
 			<!-- Header Inner -->
 			<div class="header-inner">
@@ -106,28 +94,23 @@
 								<div class="main-menu">
 									<nav class="navigation">
 										<ul class="nav menu">
-											<li><a class="active" href="index.php?reference=login">Home </a></li>											
+											<li class="active"><a href="index.php?reference=login">Home <i class="icofont-rounded-down"></i></a></li>
 											<li><a href="admindashbaord/index.php">Dashboard</a></li>										
 											<li><a href="index.php?reference=login">Notification(4) </a></li>	
 											<li><a href="contact.html">mails(7)</a></li>
-											<li><a href="contact.html">Help</a></li>					
-							                <li><a href="index.php?reference=login">Login </a></li>
-
-											
-												
-											
-											
+											<li><a href="#">help <i class="icofont-rounded-down"></i></a>
+												<ul class="dropdown">
+													<li><a href="help.php">help page</a></li>
+													
+												</ul>												
+											</li>											
+											<li><a href="index.php?reference=login">Login </a></li>																			
 											
 										</ul>
 									</nav>
 								</div>
 								<!--/ End Main Menu -->
-							</div>
-							<div class="col-lg-2 col-12">
-								<div class="get-quote">
-									<a href="birthregistration/index.php" class="btn">APPLY FOR CERTIFICATE</a>
-								</div>
-							</div>
+							</div>							
 						</div>
 					</div>
 				</div>
@@ -140,16 +123,16 @@
 		<section class="slider">
 			<div class="hero-slider">
 				<!-- Start Single Slider -->
-				<div class="single-slider" style="background-image:url('images/img1.jpg')">
+				<div class="single-slider" style="background-image:url('images/img3.jpg')">
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-7">
 								<div class="text">
-									<h1>Get <span>Medical</span> Your childs <span></span></h1>
-									<p>Birth CERTIFICATE done in minutes and  given to you electronically. </p>
+									<h1>Get Your Child's <span>Birth Certificate</span></h1>
+									<p>it can be done in minutes and submitted for processing. </p>
 									<div class="button">
-										<a href="#" class="btn">Apply for CERTIFICATE</a>
-										<a href="#" class="btn primary">CHECK CERTIFICATE</a>
+										<a href="birthregistration/index.php" class="btn">Apply for Certificate</a>
+										<a href="birthregistration/index.php" class="btn primary">Check Certificate</a>
 									</div>
 								</div>
 							</div>
@@ -157,42 +140,24 @@
 					</div>
 				</div>
 				<!-- End Single Slider -->
-				<!-- Start Single Slider -->
-				<div class="single-slider" style="background-image:url('images/img2.jpg')">
-					<div class="container">
-						<div class="row">
-							<div class="col-lg-7">
-								<div class="text">
-									<h1>Get <span>Medical</span> Your childs <span></span></h1>
-									<p>Birth CERTIFICATE done in minutes and  given to you electronically. </p>
-									<div class="button">
-										<a href="#" class="btn">Get Appointment</a>
-										<a href="#" class="btn primary">About Us</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Start End Slider -->
 				<!-- Start Single Slider -->
 				<div class="single-slider" style="background-image:url('images/img3.jpg')">
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-7">
 								<div class="text">
-									<h1>Get <span>Medical</span> Your childs <span></span></h1>
-									<p>Birth CERTIFICATE done in minutes and  given to you electronically. </p>
+									<h1><span>Reliable</span> and Fast</h1>
+									<p>We priotize confidentiality and access control of ur information. </p>
 									<div class="button">
-										<a href="#" class="btn">Get Appointment</a>
-										<a href="#" class="btn primary">Conatct Now</a>
+										<a href="birthregistration/index.php" class="btn">Apply for Certificate</a>
+										<a href="#" class="btn primary">Check Certificate</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- End Single Slider -->
+				<!-- Start End Slider -->				
 			</div>
 		</section>
 		<!--/ End Slider Area -->
@@ -210,10 +175,10 @@
 										<i class="fa fa-ambulance"></i>
 									</div>
 									<div class="single-content">
-										<span></span>
-										<h4>Emergency Cases</h4>
-										<p></p>
-										<a href="#">Apply<i class="fa fa-long-arrow-right"></i></a>
+										<span>frequently asked question</span>
+										<h4>why use the elctronic method</h4>
+										<p>We make it less stressful to register ur child for us to create the birth certificate.</p>
+										<a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
 									</div>
 								</div>
 							</div>
@@ -226,9 +191,8 @@
 										<i class="icofont-prescription"></i>
 									</div>
 									<div class="single-content">
-										<span>Get Help</span>
-										<h4></h4>
-										<p></p>
+										<h4>How safe is ur information</h4>
+										<p>We have in place many modalities for safety our database is state secure with top notch security teams.</p>
 										<a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
 									</div>
 								</div>
@@ -242,12 +206,13 @@
 										<i class="icofont-ui-clock"></i>
 									</div>
 									<div class="single-content">
-										
+										<span>you can always visit us</span>
 										<h4>Opening Hours</h4>
 										<ul class="time-sidual">
-											<li class="day">Monday - Friday <span>8:00-3:30</span></li>										
+											<li class="day">Monday - Friday <span>opening time-closing time</span></li>
+											<li class="day">Saturday <span>opening time-closing time</span></li>
+											<li class="day">additionation date <span>opening time-closing time</span></li>
 										</ul>
-										<a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
 									</div>
 								</div>
 							</div>
@@ -258,8 +223,8 @@
 		</section>
 		<!--/End Start schedule Area -->
 
-		<!-- Start Feautes -->
-	
+		<!-- Footer Area -->
+		<footer id="footer" class="footer ">			
 			<!-- Copyright -->
 			<div class="copyright">
 			<marquee behavior="scroll" direction="left"><h4>GET YOUR BIRTH CERTIFICATE DONE IN MINUTES</h4></marquee>
@@ -267,7 +232,7 @@
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-12">
 							<div class="copyright-content">
-								<p>© Copyright 2024 |  All Rights Reserved by <a href="https://www.wpthemesgrid.com" target="_blank">.GOV</a> </p>
+								<p>© Copyright <?php echo date("Y");?>  |  All Rights Reserved by <a href="https://www.skye8.tech" target="_blank">skye8.com</a> </p>
 							</div>
 						</div>
 					</div>

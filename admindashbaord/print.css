@@ -1,0 +1,71 @@
+html{
+    max-width: 700px;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.certificate {
+    width: 700px;
+    height: 1300px;
+    border: 1px solid #ccc;
+    padding: 50px;
+    box-sizing: border-box;
+    font-size: smaller;
+    display: block;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.label {
+    width: 200px;
+    font-weight: bold;
+}
+
+.value {
+    width: 600px;
+}
+
+.signature {
+    margin-top: 50px;
+    text-align: center;
+}
+.container{
+    position: relative;
+}
+.center{
+    text-align:center;
+}
+.top-right{
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+.of{
+    text-align: right;
+}
+.body{
+    border-radius: 5px;
+    border: 100px;
+    padding: 10px;
+}
+.bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
+.bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+  }
+.info{
+    justify-content: left;
+    word-wrap: break-word;
+  }

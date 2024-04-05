@@ -1,4 +1,5 @@
 <?php
+include "class.php";
 if(!session_start()){
   session_start();
 }
@@ -84,17 +85,36 @@ if($_SESSION['bcglevel']==1){
           </a>
         </li><!-- End Search Icon-->
 
+        <?php   
+                  
+                        $sql = "SELECT * FROM application WHERE status = ''";
+                        $conn = new Connection();
+                        $connect = $conn->connect();
+                        $result = $connect->query($sql);
+                         $i = 0;
+                        while($row= $result->fetch_assoc()){
+                          $i = $i +1;
+                          $applicationnumber = $row['application_number'];
+                          $applicantName = $row['applicant_name'];
+                          $childname = $row['child_name'];
+                          $dob = $row['child_dob'];
+                          $town = $row['child_place_of_birth'];
+                          $status = $row['status'];
+                                     
+                      
+                        }
+                      ?>
         <li class="nav-item dropdown">
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-bell"></i>
-            <span class="badge bg-primary badge-number">4</span>
+            <span class="badge bg-primary badge-number"><?php echo $i?></span>
           </a><!-- End Notification Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
             <li class="dropdown-header">
-              You have 4 new notifications
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+              You have <?php echo $i?> new notifications
+              <a href="newapplications.php"><span class="badge rounded-pill bg-primary p-2 ms-2">View Applications</span></a>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -103,9 +123,9 @@ if($_SESSION['bcglevel']==1){
             <li class="notification-item">
               <i class="bi bi-exclamation-circle text-warning"></i>
               <div>
-                <h4>Lorem Ipsum</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>30 min. ago</p>
+                <h4>Admin!</h4>
+                <p>There are <?php echo $i?> New apllications </p>
+                
               </div>
             </li>
 
@@ -115,9 +135,7 @@ if($_SESSION['bcglevel']==1){
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li class="dropdown-footer">
-              <a href="#">Show all notifications</a>
-            </li>
+           
 
           </ul><!-- End Notification Dropdown Items -->
 
@@ -163,7 +181,7 @@ if($_SESSION['bcglevel']==1){
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+          <i class="bi bi-person"></i>
             <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $_SESSION['bcgusername'] ?></span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -227,7 +245,7 @@ if($_SESSION['bcglevel']==1){
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="admin.php">
+      <a class="nav-link " href="index.php">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -248,7 +266,7 @@ if($_SESSION['bcglevel']==1){
             </a>
           </li>
           <li>
-            <a href="rejected.php">
+            <a href="verified.php">
               <i class="bi bi-circle"></i><span>Verified Applications</span>
             </a>
           </li>
@@ -276,8 +294,8 @@ if($_SESSION['bcglevel']==1){
             </a>
           </li>
           <li>
-            <a href="charts-apexcharts.html">
-              <i class="bi bi-circle"></i><span>Manage Admin users</span>
+            <a href="manageusers.php">
+              <i class="manageusers.php"></i><span>Manage Admin users</span>
             </a>
           </li>
           <li>
@@ -390,8 +408,9 @@ if($_SESSION['bcglevel']==1){
                     </thead>
                     <tbody>                      
                     <?php   
-                    include 'class.php'; 
-                        $sql = "SELECT * FROM application WHERE status='verified'";
+                    $status = "verified";
+                    
+                        $sql = "SELECT * FROM `application` WHERE status = 'verified'";
                         $conn = new Connection();
                         $connect = $conn->connect();
                         $result = $connect->query($sql);

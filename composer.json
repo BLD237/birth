@@ -1,7 +1,18 @@
 {
+    "name": "int-tech/birth",
+    "autoload": {
+        "psr-4": {
+            "IntTech\\Birth\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "belmond",
+            "email": "muforbelmond20@gmail.com"
+        }
+    ],
     "require": {
-        "tecnickcom/tcpdf": "^6.7",
-        "bacon/bacon-qr-code": "^2.0",
-        "nesbot/carbon": "^2.72"
+        "dompdf/dompdf": "^2.0",
+        "mpdf/mpdf": "^6.1"
     }
 }
